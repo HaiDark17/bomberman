@@ -13,6 +13,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 
+import oop.bomberman.audio.Audio;
 import oop.bomberman.exceptions.BombermanException;
 import oop.bomberman.graphics.Screen;
 import oop.bomberman.gui.Frame;
@@ -27,7 +28,7 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener
 	|--------------------------------------------------------------------------
 	 */
 	public static final double VERSION = 1.9;
-
+	private Audio audio = new Audio();
 	public static final int TILES_SIZE = 16,
 			WIDTH = TILES_SIZE * (int)(31 / 2), //minus one to ajust the window,
 			HEIGHT = 13 * TILES_SIZE;

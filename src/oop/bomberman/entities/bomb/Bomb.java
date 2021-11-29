@@ -2,6 +2,7 @@ package oop.bomberman.entities.bomb;
 
 import oop.bomberman.Board;
 import oop.bomberman.Game;
+import oop.bomberman.audio.Audio;
 import oop.bomberman.entities.AnimatedEntitiy;
 import oop.bomberman.entities.Entity;
 import oop.bomberman.entities.mob.Mob;
@@ -14,7 +15,7 @@ public class Bomb extends AnimatedEntitiy {
 
 	protected double _timeToExplode = 120;
 	public int _timeAfter = 20;
-	
+	private Audio audio = new Audio();
 	protected Board _board;
 	protected boolean _allowedToPassThru = true;
 	protected DirectionalExplosion[] _explosions = null;
@@ -84,12 +85,11 @@ public class Bomb extends AnimatedEntitiy {
 		if(a != null)  {
 			a.kill();
 		}
-		
 		_explosions = new DirectionalExplosion[4];
-		
 		for (int i = 0; i < _explosions.length; i++) {
 			_explosions[i] = new DirectionalExplosion((int)_x, (int)_y, i, Game.getBombRadius(), _board);
 		}
+		audio.playSound("res/sound/Explosion.wav",0);
 	}
 	
 	public Explosion explosionAt(int x, int y) {

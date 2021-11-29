@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import oop.bomberman.Game;
+import oop.bomberman.audio.Audio;
 import oop.bomberman.gui.menu.Menu;
 
 public class Frame extends JFrame {
@@ -13,7 +14,7 @@ public class Frame extends JFrame {
 	public GamePanel _gamepane;
 	private JPanel _containerpane;
 	private InfoPanel _infopanel;
-
+	private Audio audio = new Audio();
 	private Game _game;
 
 	public Frame() {
@@ -35,7 +36,7 @@ public class Frame extends JFrame {
 		pack();
 		setLocationRelativeTo(null);
 		setVisible(true);
-
+		audio.playSound("res/sound/stage.wav",100);
 		_game.start();
 	}
 

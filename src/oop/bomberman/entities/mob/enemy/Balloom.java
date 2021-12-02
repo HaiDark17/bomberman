@@ -3,7 +3,7 @@ package oop.bomberman.entities.mob.enemy;
 
 import oop.bomberman.Board;
 import oop.bomberman.Game;
-import oop.bomberman.entities.mob.enemy.ai.AILow;
+import oop.bomberman.entities.mob.enemy.algorithm.SimpleAlgo;
 import oop.bomberman.graphics.Sprite;
 
 public class Balloom extends Enemy {
@@ -14,8 +14,8 @@ public class Balloom extends Enemy {
 		
 		_sprite = Sprite.balloom_left1;
 		
-		_ai = new AILow();
-		_direction = _ai.calculateDirection();
+		algorithm = new SimpleAlgo();
+		_direction = algorithm.calculateDirection();
 	}
 	
 	/*

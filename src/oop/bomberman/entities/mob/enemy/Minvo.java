@@ -3,19 +3,18 @@ package oop.bomberman.entities.mob.enemy;
 
 import oop.bomberman.Board;
 import oop.bomberman.Game;
-import oop.bomberman.entities.mob.enemy.ai.AIMedium;
+import oop.bomberman.entities.mob.enemy.algorithm.MediumAlgo;
 import oop.bomberman.graphics.Sprite;
 
 public class Minvo extends Enemy {
-	
-	
+
 	public Minvo(int x, int y, Board board) {
 		super(x, y, board, Sprite.minvo_dead, Game.getPlayerSpeed() * 2, 800);
 		
 		_sprite = Sprite.minvo_right1;
 		
-		_ai = new AIMedium(_board.getPlayer(), this);
-		_direction  = _ai.calculateDirection();
+		algorithm = new MediumAlgo(_board.getPlayer(), this);
+		_direction  = algorithm.calculateDirection();
 	}
 	/*
 	|--------------------------------------------------------------------------

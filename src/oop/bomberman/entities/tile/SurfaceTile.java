@@ -4,9 +4,9 @@ package oop.bomberman.entities.tile;
 import oop.bomberman.entities.Entity;
 import oop.bomberman.graphics.Sprite;
 
-public class GrassTile extends Tile {
+public class SurfaceTile extends Tile {
 
-	public GrassTile(int x, int y, Sprite sprite) {
+	public SurfaceTile(int x, int y, Sprite sprite) {
 		super(x, y, sprite);
 	}
 	

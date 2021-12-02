@@ -70,7 +70,7 @@ public class Player extends Mob {
 		if (_alive)
 			chooseSprite();
 		else
-			_sprite = Sprite.player_dead1;
+			_sprite = Sprite.player_dead3;
 
 		screen.renderEntity((int) _x, (int) _y - _sprite.SIZE, this);
 	}

@@ -5,21 +5,21 @@ import oop.bomberman.exceptions.LoadLevelException;
 
 public abstract class Level implements ILevel {
 
-	protected int _width, _height, _level;
-	protected String[] _lineTiles;
-	protected Board _board;
+	protected int width, height, level;
+	protected String[] lineTiles;
+	protected Board board;
 
-	protected static String[] codes = { //TODO: change this code system to actualy load the code from each level.txt
-		"dnibpb5uqy",
-		"cuq0vaxstb",
-		"38y418wriq",
-		"34h8k0chcs",
-		"9qztxh6l4s",
+	protected static String[] codes = {
+		"ng3I/uQttnHX1/EFFjFj3Rv/nNRfE2upZOenQbEsXPE=",
+		"jB+b1iEWYFoh6GXkYn3k4GbcI9Eo3D1qlDgu8ZBVyhI=",
+		"Kkp03H5BNbKGP9giHdY7aA5+YRmYCgPFJ5/Eo17pKDo=",
+		"HmpJWLnwd6dIUB3BcYZ8/IRAEHBQm4EnLTwcrYm8/zI=",
+		"8drcJZ+XiULPkoT5xiYSaSThf01dpewt9hjfvV9ufOs=",
 		};
 
 	public Level(String path, Board board) throws LoadLevelException {
 		loadLevel(path);
-		_board = board;
+		this.board = board;
 	}
 
 	@Override
@@ -27,11 +27,6 @@ public abstract class Level implements ILevel {
 	
 	public abstract void createEntities();
 
-	/*
-	|--------------------------------------------------------------------------
-	| Codes
-	|--------------------------------------------------------------------------
-	 */
 	public int validCode(String str) {
 		for (int i = 0; i < codes.length; i++) {
 			if (codes[i].equals(str)) {
@@ -42,19 +37,19 @@ public abstract class Level implements ILevel {
 	}
 	
 	public String getActualCode() {
-		return codes[_level -1];
+		return codes[level -1];
 	}
 
 	public int getWidth() {
-		return _width;
+		return width;
 	}
 
 	public int getHeight() {
-		return _height;
+		return height;
 	}
 
 	public int getLevel() {
-		return _level;
+		return level;
 	}
 
 }

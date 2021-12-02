@@ -19,14 +19,8 @@ import oop.bomberman.graphics.Screen;
 import oop.bomberman.gui.Frame;
 import oop.bomberman.input.Keyboard;
 
-public class Game extends Canvas implements MouseListener, MouseMotionListener
-{
+public class Game extends Canvas implements MouseListener, MouseMotionListener {
 
-	/*
-	|--------------------------------------------------------------------------
-	| Options & Configs
-	|--------------------------------------------------------------------------
-	 */
 	public static final double VERSION = 1.9;
 	private Audio audio = new Audio();
 	public static final int TILES_SIZE = 16,
@@ -37,7 +31,7 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener
 
 	public static final String TITLE = "Bomberman ";
 
-	//initial configs
+	// Config
 	private static final int BOMBRATE = 1;
 	private static final int BOMBRADIUS = 1;
 	private static final double PLAYERSPEED = 0.9;
@@ -197,7 +191,7 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener
 		BufferedReader read;
 		try
 		{
-			read = new BufferedReader(new FileReader(new File("res/data/highscore.txt")));
+			read = new BufferedReader(new FileReader(new File("res/data/BestScore.txt")));
 			String score = read.readLine().trim();
 			if (score == null)
 				_highscore = 0;

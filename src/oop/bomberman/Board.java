@@ -36,7 +36,7 @@ public class Board implements IRender {
 	private int _screenToShow = -1; //1:endgame, 2:changelevel, 3:paused
 
 	private int _time = Game.TIME;
-	private int _points = Game.POINTS;
+	private int points = Game.POINTS;
 	private int _lives = Game.LIVES;
 
 	public Board(Game game, Keyboard input, Screen screen) {
@@ -103,7 +103,7 @@ public class Board implements IRender {
 
 	@SuppressWarnings("static-access")
 	private void resetProperties() {
-		_points = Game.POINTS;
+		points = Game.POINTS;
 		_lives = Game.LIVES;
 		Player._powerups.clear();
 
@@ -209,7 +209,7 @@ public class Board implements IRender {
 	public void drawScreen(Graphics g) {
 		switch (_screenToShow) {
 			case 1:
-				_screen.drawEndGame(g, _points, _level.getActualCode());
+				_screen.drawEndGame(g, points, _level.getActualCode());
 				break;
 			case 2:
 				_screen.drawChangeLevel(g, _level.getLevel());
@@ -267,7 +267,6 @@ public class Board implements IRender {
 
 	public Mob getMobAt(double x, double y) {
 		Iterator<Mob> itr = _mobs.iterator();
-
 		Mob cur;
 		while(itr.hasNext()) {
 			cur = itr.next();
@@ -281,7 +280,6 @@ public class Board implements IRender {
 
 	public Player getPlayer() {
 		Iterator<Mob> itr = _mobs.iterator();
-
 		Mob cur;
 		while(itr.hasNext()) {
 			cur = itr.next();
@@ -295,7 +293,6 @@ public class Board implements IRender {
 
 	public Mob getMobAtExcluding(int x, int y, Mob a) {
 		Iterator<Mob> itr = _mobs.iterator();
-
 		Mob cur;
 		while(itr.hasNext()) {
 			cur = itr.next();
@@ -473,14 +470,14 @@ public class Board implements IRender {
 	}
 
 	public int getPoints() {
-		return _points;
+		return points;
 	}
 
 	public void addPoints(int points) {
-		this._points += points;
+		this.points += points;
 	}
 
-	public void resetPoints(){_points = 0;}
+	public void resetPoints(){points = 0;}
 
 	public void addLives(int lives) {
 		this._lives += lives;

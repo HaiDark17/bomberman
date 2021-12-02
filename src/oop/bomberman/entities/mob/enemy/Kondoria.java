@@ -3,7 +3,7 @@ package oop.bomberman.entities.mob.enemy;
 
 import oop.bomberman.Board;
 import oop.bomberman.Game;
-import oop.bomberman.entities.mob.enemy.ai.AIMedium;
+import oop.bomberman.entities.mob.enemy.algorithm.MediumAlgo;
 import oop.bomberman.graphics.Sprite;
 
 public class Kondoria extends Enemy {
@@ -14,8 +14,8 @@ public class Kondoria extends Enemy {
 		
 		_sprite = Sprite.kondoria_right1;
 		
-		_ai = new AIMedium(_board.getPlayer(), this); //TODO: implement AIHigh 
-		_direction  = _ai.calculateDirection();
+		algorithm = new MediumAlgo(_board.getPlayer(), this); //TODO: implement AIHigh
+		_direction  = algorithm.calculateDirection();
 	}
 	/*
 	|--------------------------------------------------------------------------

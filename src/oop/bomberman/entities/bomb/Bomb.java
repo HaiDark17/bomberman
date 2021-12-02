@@ -50,7 +50,7 @@ public class Bomb extends AnimatedEntitiy {
 	@Override
 	public void render(Screen screen) {
 		if(_exploded) {
-			_sprite =  Sprite.bomb_exploded2;
+			_sprite =  Sprite.explosion_central;
 			renderExplosions(screen);
 		} else
 			_sprite = Sprite.movingSprite(Sprite.bomb, Sprite.bomb_1, Sprite.bomb_2, _animate, 60);
@@ -117,8 +117,8 @@ public class Bomb extends AnimatedEntitiy {
 			double diffY = e.getY() - Coordinates.tileToPixel(getY());
 			
 			if(!(diffX >= -13 && diffX < 16 && diffY >= 1 && diffY <= 30)) {
-				System.out.println(e.getX() +" "+ Coordinates.tileToPixel(getX()) +" "+ diffX);
-				System.out.println(e.getY() +" "+ Coordinates.tileToPixel(getY()) +" "+ diffY);
+				// System.out.println(e.getX() +" "+ Coordinates.tileToPixel(getX()) +" "+ diffX);
+				// System.out.println(e.getY() +" "+ Coordinates.tileToPixel(getY()) +" "+ diffY);
 				_allowedToPassThru = false;
 			}
 			

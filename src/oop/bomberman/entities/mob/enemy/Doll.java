@@ -3,19 +3,17 @@ package oop.bomberman.entities.mob.enemy;
 
 import oop.bomberman.Board;
 import oop.bomberman.Game;
-import oop.bomberman.entities.mob.enemy.ai.AILow;
+import oop.bomberman.entities.mob.enemy.algorithm.SimpleAlgo;
 import oop.bomberman.graphics.Sprite;
 
 public class Doll extends Enemy {
-	
-	
 	public Doll(int x, int y, Board board) {
 		super(x, y, board, Sprite.doll_dead, Game.getPlayerSpeed(), 400);
 		
 		_sprite = Sprite.doll_right1;
 		
-		_ai = new AILow();
-		_direction = _ai.calculateDirection();
+		algorithm = new SimpleAlgo();
+		_direction = algorithm.calculateDirection();
 	}
 	
 	/*

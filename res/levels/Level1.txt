@@ -1,32 +1,14 @@
 1 13 31
-###############################
-#p     ** *    *   *  * * *   #
-# # # #*# # #*#*# # # #*#*#*# #
-#   *     ***  *      *   * * #
-# # # # # #*# # #*#*# # # # #*#
-#f         x **1 *  *  1     1#
-# # # # # # # # # #*#1#*# # # #
-#*  *      *  *      *        #
-# # # # #*# # # #*#*# # # # # #
-#*    **  *       *           #
-# #*# # # # # # #*# # # # # # #
-#           *1  *  *          #
-###############################
-
-Meta data:
-(Number or Level) (Rows) (Columns)
-
-Info Tiles:
-# - Wall
-* - Brick
-x - Portal
-
-Mobs:
-p - Player
-1 - Balloom
-2 - Oneal
-
-Powerups:
-b - Powerup Bombs
-f - Powerup Flames
-s - Powerup Speed
+6TTTTTTTTTTTTTTTTTTTTTTTTTTTTT7
+LC     ** *    *   *  * * *   R
+L # # #*# # #*#*# # # #*#*#*# R
+L   *     ***  *      *   * * R
+L # # # # #*# # #*#*# # # # #*R
+LF         P **1 *  *  1     1R
+L # # # # # # # # #*#1#*# # # R
+L*  *      *  *      *        R
+L # # # #*# # # #*#*# # # # # R
+L*    **  *       *           R
+L #*# # # # # # #*# # # # # # R
+L           *1  *  *          R
+9DDDDDDDDDDDDDDDDDDDDDDDDDDDDD8

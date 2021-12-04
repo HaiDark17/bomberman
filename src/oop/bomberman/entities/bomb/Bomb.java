@@ -15,7 +15,6 @@ public class Bomb extends AnimatedEntitiy {
 
 	protected double _timeToExplode = 120;
 	public int _timeAfter = 20;
-	private Audio audio = new Audio();
 	protected Board _board;
 	protected boolean _allowedToPassThru = true;
 	protected DirectionalExplosion[] _explosions = null;

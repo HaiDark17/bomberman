@@ -1,5 +1,6 @@
 package oop.bomberman.entities.mob;
 
+
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,8 +23,6 @@ import oop.bomberman.input.Keyboard;
 import oop.bomberman.level.Coordinates;
 
 public class Player extends Mob {
-	private Audio audio = new Audio();
-
 	private List<Bomb> _bombs;
 	protected Keyboard _input;
 
@@ -102,7 +101,7 @@ public class Player extends Mob {
 	protected void placeBomb(int x, int y) {
 		Bomb b = new Bomb(x, y, _board);
 		_board.addBomb(b);
-		audio.playSound("res/sound/putBomb.wav", 0);
+		audio.playSound( "res/sound/putBomb.wav",0);
 	}
 
 	private void clearBombs() {
@@ -177,8 +176,7 @@ public class Player extends Mob {
 			double yt = ((_y + y) + c / 2 * 12 - 13) / Game.TILES_SIZE;
 
 			Entity a = _board.getEntity(xt, yt, this);
-			if (!a.collide(this)) {
-				/*
+			if (!a.collide(this) ) {
 				if (_input.right || _input.left) {
 					if ((a.getY() * Game.TILES_SIZE + 14 > _y
 							&& a.getY() * Game.TILES_SIZE < _y)) {
@@ -200,7 +198,6 @@ public class Player extends Mob {
 						_x -= 1;
 					}
 				}
-				*/
 				return false;
 			}
 		}

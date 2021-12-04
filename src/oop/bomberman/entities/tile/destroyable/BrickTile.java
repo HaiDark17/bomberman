@@ -10,7 +10,6 @@ import oop.bomberman.graphics.Sprite;
 import oop.bomberman.level.Coordinates;
 
 public class BrickTile extends DestroyableTile {
-	private Audio audio = new Audio();
 	public BrickTile(int x, int y, Sprite sprite) {
 		super(x, y, sprite);
 	}

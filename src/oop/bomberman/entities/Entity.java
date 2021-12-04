@@ -1,11 +1,12 @@
 package oop.bomberman.entities;
 
+import oop.bomberman.CommonVariables;
 import oop.bomberman.graphics.IRender;
 import oop.bomberman.graphics.Screen;
 import oop.bomberman.graphics.Sprite;
 import oop.bomberman.level.Coordinates;
 
-public abstract class Entity implements IRender {
+public abstract class Entity implements IRender, CommonVariables {
 
 	protected double _x, _y;
 	protected boolean _removed = false;

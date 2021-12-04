@@ -1,69 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a0804caa-1fcd-4380-a333-847e49b4b58f" name="Changes" comment="Update graphics, level files">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/enemy/algorithm/MediumAlgo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/enemy/algorithm/SimpleAlgo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+    <list default="true" id="a0804caa-1fcd-4380-a333-847e49b4b58f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bomberman.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bomberman.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/oop/bomberman/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/oop/bomberman/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/audio/Audio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/audio/Audio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/bomb/Bomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/bomb/Bomb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/bomb/Explosion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/bomb/Explosion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/enemy/Balloom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/enemy/Balloom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/enemy/Doll.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/enemy/Doll.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/enemy/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/enemy/Enemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/enemy/Kondoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/enemy/Kondoria.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/enemy/Minvo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/enemy/Minvo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/enemy/Oneal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/enemy/Oneal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/enemy/ai/AI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/enemy/algorithm/Algorithm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/enemy/ai/AILow.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/enemy/ai/AIMedium.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/tile/GrassTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/tile/SurfaceTile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/graphics/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/graphics/Sprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/tile/destroyable/BrickTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/tile/destroyable/BrickTile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/graphics/IRender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/graphics/IRender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/graphics/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/graphics/Screen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/oop/bomberman/graphics/SpriteSheet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/graphics/SpriteSheet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/level/FileLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/level/FileLevel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/level/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/level/Level.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/gui/CodeDialog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/gui/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/gui/Frame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/gui/InfoDialog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/gui/InfoPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/gui/InfoPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/gui/menu/Game.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/gui/menu/Help.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/gui/menu/Menu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/gui/menu/Options.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ChangesViewManager">
-    <option name="groupingKeys">
-      <option value="directory" />
-      <option value="module" />
-    </option>
-  </component>
-  <component name="Git.Pull.Settings">
-    <option name="OPTIONS">
-      <set>
-        <option value="REBASE" />
-      </set>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="21N2yxWyMk5HqjOpkIJVxqcZhHn" />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="21kuD5EwrNXkVtPxP4KR0s6y1gT" />
   <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/res/textures" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Desktop/bomberman-master/bomberman-master" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Java\bomberman\res\textures" />
       <recent name="E:\Java\bomberman-base\src\oop" />
     </key>
   </component>
@@ -91,35 +83,20 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="a0804caa-1fcd-4380-a333-847e49b4b58f" name="Changes" comment="" />
-      <created>1637767483046</created>
+      <created>1638497314404</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1637767483046</updated>
+      <updated>1638497314404</updated>
+      <workItem from="1638497335146" duration="3715000" />
+      <workItem from="1638519168529" duration="4198000" />
+      <workItem from="1638531156897" duration="1571000" />
+      <workItem from="1638545098479" duration="2394000" />
+      <workItem from="1638591119163" duration="15000000" />
+      <workItem from="1638624163474" duration="348000" />
     </task>
-    <task id="LOCAL-00001" summary="Update graphics, level files">
-      <created>1638452523646</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1638452523646</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Update graphics, level files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update graphics, level files" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>

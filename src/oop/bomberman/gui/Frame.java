@@ -5,29 +5,28 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import oop.bomberman.CommonVariables;
 import oop.bomberman.Game;
 import oop.bomberman.audio.Audio;
-import oop.bomberman.gui.menu.Menu;
 
-public class Frame extends JFrame {
+
+public class Frame extends JFrame{
 
 	public GamePanel _gamepane;
 	private JPanel _containerpane;
 	private InfoPanel _infopanel;
-	private Audio audio = new Audio();
 	private Game _game;
 
 	public Frame() {
-		setJMenuBar(new Menu(this));
-
 		_containerpane = new JPanel(new BorderLayout());
 		_gamepane = new GamePanel(this);
 		_infopanel = new InfoPanel(_gamepane.getGame());
 
-		_containerpane.add(_infopanel, BorderLayout.PAGE_START);
-		_containerpane.add(_gamepane, BorderLayout.PAGE_END);
+		_containerpane.add(_infopanel, BorderLayout.WEST);
+		_containerpane.add(_gamepane, BorderLayout.CENTER);
 
 		_game = _gamepane.getGame();
+		_infopanel.setVisible(false);
 
 		add(_containerpane);
 
@@ -36,7 +35,6 @@ public class Frame extends JFrame {
 		pack();
 		setLocationRelativeTo(null);
 		setVisible(true);
-		audio.playSound("res/sound/stage.wav",100);
 		_game.start();
 	}
 
@@ -45,6 +43,11 @@ public class Frame extends JFrame {
 	| Game Related
 	|--------------------------------------------------------------------------
 	 */
+
+	public InfoPanel get_infopanel() {
+		return _infopanel;
+	}
+
 	public void newGame() {
 		_game.getBoard().newGame();
 	}

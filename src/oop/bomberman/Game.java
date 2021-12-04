@@ -19,12 +19,11 @@ import oop.bomberman.graphics.Screen;
 import oop.bomberman.gui.Frame;
 import oop.bomberman.input.Keyboard;
 
-public class Game extends Canvas implements MouseListener, MouseMotionListener {
+public class Game extends Canvas implements MouseListener, MouseMotionListener, CommonVariables {
 
 	public static final double VERSION = 1.9;
-	private Audio audio = new Audio();
 	public static final int TILES_SIZE = 16,
-			WIDTH = TILES_SIZE * (int)(31 / 2), //minus one to ajust the window,
+			WIDTH = TILES_SIZE * (int)(31 / 2) , //minus one to ajust the window,
 			HEIGHT = 13 * TILES_SIZE;
 
 	public static int SCALE = 3;
@@ -56,6 +55,7 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener {
 	private Keyboard _input;
 	private boolean _running = false;
 	private boolean _menu = true;
+	private boolean _selectMap = false;
 	private boolean _paused = true;
 
 	private Board _board;
@@ -104,14 +104,14 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener {
 		bs.show(); //make next buffer visible
 	}
 
-	private void renderScreen() { //TODO: merge these render methods
+	public void renderScreen() { //TODO: merge these render methods
 		BufferStrategy bs = getBufferStrategy();
 		if(bs == null) {
 			createBufferStrategy(3);
 			return;
 		}
 
-		screen.clear();
+		//screen.clear();
 
 		Graphics g = bs.getDrawGraphics();
 
@@ -128,6 +128,7 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener {
 
 	public void start() {
 		readHighscore();
+		audio.playSound("res/sound/stage.wav",100);
 		while (_menu)
 		{
 			renderScreen();
@@ -156,6 +157,10 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener {
 				delta--;
 			}
 
+			while(_frame.get_infopanel().isSetting){
+				renderScreen();
+			}
+
 			if (_paused)
 			{
 				if (_screenDelay <= 0)
@@ -174,6 +179,7 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener {
 			if (System.currentTimeMillis() - timer > 1000)
 			{
 				_frame.setTime(_board.subtractTime());
+				_frame.setLives(_board.getLives());
 				_frame.setPoints(_board.getPoints());
 				timer += 1000;
 				_frame.setTitle(TITLE + " | " + updates + " rate, " + frames + " fps");
@@ -208,42 +214,32 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener {
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{
-		Rectangle playButton = new Rectangle(Game.WIDTH - 110, Game.HEIGHT + 50, 200, 100);
-		if (playButton.contains(e.getX(), e.getY()) == true)
+		Rectangle playButton = new Rectangle(Game.WIDTH + 50, Game.HEIGHT + 100, 150, 50);
+		if (playButton.contains(e.getX(), e.getY()) && _menu)
 		{
 			_menu = false;
 			_running = true;
+			_frame.get_infopanel().setVisible(true);
 		}
 		Rectangle replayButton = new Rectangle(310, 412, 105, 30);
-		if (replayButton.contains(e.getX(), e.getY()) == true)
+		if (replayButton.contains(e.getX(), e.getY()))
 		{
 			_board.changeLevel(1);
 			_board.resetPoints();
 
 		}
-		Rectangle highscoreButton = new Rectangle(Game.WIDTH + 100, Game.HEIGHT + 50, 250, 70);
-		if (highscoreButton.contains(e.getX(), e.getY()) == true)
-		{
-			_board.setShow(5);
-		}
-		Rectangle backButton = new Rectangle(10, 10, 90, 45);
-		if (backButton.contains(e.getX(),  e.getY()) == true)
-		{
-			_board.setShow(4);
-		}
+
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent e){
 		Cursor.getDefaultCursor();
 		Cursor cursor;
-		Rectangle playButton = new Rectangle(Game.WIDTH - 110, Game.HEIGHT + 50, 200, 100);
-		if (playButton.contains(e.getX(), e.getY()) == true){
-			screen.isHover = true;
+		Rectangle playButton = new Rectangle(Game.WIDTH + 50, Game.HEIGHT + 100, 150, 50);
+		if (playButton.contains(e.getX(), e.getY()) && _menu){
 			cursor = Cursor.getPredefinedCursor(Cursor.HAND_CURSOR);
 			setCursor(cursor);
 		}else{
-			screen.isHover = false;
 			setCursor(Cursor.getDefaultCursor());
 		}
 	}
@@ -322,6 +318,10 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener {
 		_paused = false;
 	}
 
+	public boolean getMenu(){
+		return _menu;
+	}
+
 	public void stop() {
 		_running = false;
 	}
@@ -336,5 +336,9 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener {
 
 	public void pause() {
 		_paused = true;
+	}
+
+	public Screen getScreen(){
+		return screen;
 	}
 }

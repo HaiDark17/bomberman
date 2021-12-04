@@ -176,7 +176,7 @@ public class Board implements IRender {
 	public boolean detectNoEnemies() {
 		int total = 0;
 		for (int i = 0; i < _mobs.size(); i++) {
-			if(_mobs.get(i) instanceof Player == false)
+			if(!(_mobs.get(i) instanceof Player))
 				++total;
 		}
 
@@ -221,7 +221,7 @@ public class Board implements IRender {
 				_screen.drawMenu(g);
 				break;
 			case 5:
-				_screen.drawHighscore(g);
+				_screen.drawSetting(g);
 				break;
 		}
 	}

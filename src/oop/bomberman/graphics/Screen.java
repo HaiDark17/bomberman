@@ -17,9 +17,10 @@ public class Screen {
     protected int _width, _height;
     public int[] _pixels;
     private final int _transparentColor = 0xffff00ff; //pink with alpha channel (ff in the begining)
+    private Font font;
 
     public static int xOffset = 0, yOffset = 0;
-
+    
     public Screen(int width, int height) {
         _width = width;
         _height = height;
@@ -93,6 +94,16 @@ public class Screen {
     | Game Screens
     |--------------------------------------------------------------------------
      */
+    public void intializeFont() {
+        try {
+            File fontFile = new File("res/font/VBRUSHTB.ttf");
+             font = Font.createFont(Font.TRUETYPE_FONT, fontFile).deriveFont(Font.PLAIN, 20 * Game.SCALE);
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(font);
+        } catch (IOException|FontFormatException e) {
+            //Handle exception
+        }
+    }
     public void drawEndGame(Graphics g, int points, String code) {
         g.setColor(Color.black);
         g.fillRect(0, 0, getRealWidth(), getRealHeight());
@@ -118,7 +129,8 @@ public class Screen {
         g.setColor(Color.black);
         g.fillRect(0, 0, getRealWidth(), getRealHeight());
 
-        Font font = new Font("Arial", Font.PLAIN, 20 * Game.SCALE);
+        //Font font = new Font("Arial", Font.PLAIN, 20 * Game.SCALE);
+
         g.setFont(font);
         g.setColor(Color.white);
         drawCenteredString("LEVEL " + level, getRealWidth(), getRealHeight(), g);

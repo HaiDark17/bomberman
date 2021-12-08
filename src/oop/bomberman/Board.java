@@ -207,6 +207,7 @@ public class Board implements IRender {
 	|--------------------------------------------------------------------------
 	 */
 	public void drawScreen(Graphics g) {
+		_screen.intializeFont();
 		switch (_screenToShow) {
 			case 1:
 				_screen.drawEndGame(g, points, _level.getActualCode());

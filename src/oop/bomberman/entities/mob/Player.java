@@ -130,7 +130,7 @@ public class Player extends Mob {
 		_alive = false;
 
 		_board.addLives(-1);
-		audio.playSound("res/sound/Hurt.wav",0);
+		audio.playSound("res/sound/Hit.wav",0);
 		Message msg = new Message("-1 LIVE", getXMessage(), getYMessage(), 2, Color.white, 14);
 		_board.addMessage(msg);
 	}

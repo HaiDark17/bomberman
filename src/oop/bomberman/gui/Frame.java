@@ -22,8 +22,8 @@ public class Frame extends JFrame{
 		_gamepane = new GamePanel(this);
 		_infopanel = new InfoPanel(_gamepane.getGame());
 
-		_containerpane.add(_infopanel, BorderLayout.WEST);
-		_containerpane.add(_gamepane, BorderLayout.CENTER);
+		_containerpane.add(_infopanel, BorderLayout.PAGE_START);
+		_containerpane.add(_gamepane, BorderLayout.PAGE_END);
 
 		_game = _gamepane.getGame();
 		_infopanel.setVisible(false);

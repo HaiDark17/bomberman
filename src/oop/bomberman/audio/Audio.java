@@ -8,43 +8,68 @@ import java.net.URL;
 
 public class Audio {
     private Clip clip = null;
-    private boolean isHaveSound = true;
-    private int loop;
+    private boolean isDisabled = false;
+    private String path;
 
-    public void playSound(String soundFile, int _loop) {
-        loop = _loop;
+    public Audio(String soundFile) {
+        path = soundFile;
         File f = new File("./" + soundFile);
         AudioInputStream audioIn = null;
+
         try {
             audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
-        } catch (UnsupportedAudioFileException | IOException e) {
+        } catch (IOException | UnsupportedAudioFileException e) {
             e.printStackTrace();
         }
+
         try {
-            clip = AudioSystem.getClip();
+            this.clip = AudioSystem.getClip();
         } catch (LineUnavailableException e) {
             e.printStackTrace();
         }
+
         try {
-            clip.open(audioIn);
-        } catch (LineUnavailableException | IOException e) {
+            this.clip.open(audioIn);
+        } catch (IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
-        if(!isHaveSound){
-            return;
-        }
-        clip.start();
-        clip.loop(loop);
+
     }
 
-    public void setSound() {
-        if (isHaveSound) {
-            isHaveSound = false;
-            clip.stop();
-        } else {
-            isHaveSound = true;
+    public void playSound(int _loop) {
+        if (!this.isDisabled) {
+            File f = new File("./" + path);
+            AudioInputStream audioIn = null;
+
+            try {
+                audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
+            } catch (IOException | UnsupportedAudioFileException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                this.clip = AudioSystem.getClip();
+            } catch (LineUnavailableException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                this.clip.open(audioIn);
+            } catch (IOException | LineUnavailableException e) {
+                e.printStackTrace();
+            }
+
+            this.clip.start();
+            this.clip.loop(_loop);
         }
     }
 
+    public void stopSound() {
+        this.isDisabled = true;
+        this.clip.stop();
+    }
 
+    public void setDisabled(boolean disabled) {
+        this.isDisabled = disabled;
+    }
 }

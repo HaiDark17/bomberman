@@ -25,7 +25,7 @@ public class BrickTile extends DestroyableTile {
 		int y = Coordinates.tileToPixel(_y);
 		
 		if(_destroyed) {
-			_sprite = movingSprite(Sprite.brick_exploded, Sprite.brick_exploded1, Sprite.brick_exploded2);
+			_sprite = movingSprite(brick_exploded, brick_exploded1, brick_exploded2);
 			
 			screen.renderEntityWithBelowSprite(x, y, this, _belowSprite);
 		}
@@ -38,7 +38,7 @@ public class BrickTile extends DestroyableTile {
 		
 		if(e instanceof DirectionalExplosion) {
 			destroy();
-			audio.playSound("res/sound/Crystal.wav", 0);
+			brickBreakAudio.playSound(0);
 		}
 		
 		if(e instanceof Kondoria)

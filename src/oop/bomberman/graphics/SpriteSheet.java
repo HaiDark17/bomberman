@@ -36,7 +36,6 @@ public class SpriteSheet implements CommonVariables {
 	}
 
 	public void modifySpriteSheet(String p, int s){
-		System.out.println("zzz");
 		this.path = p;
 		this.SIZE = s;
 		pixels = new int[SIZE * SIZE];

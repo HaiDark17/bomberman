@@ -88,7 +88,7 @@ public class Bomb extends AnimatedEntitiy {
 		for (int i = 0; i < _explosions.length; i++) {
 			_explosions[i] = new DirectionalExplosion((int)_x, (int)_y, i, Game.getBombRadius(), _board);
 		}
-		audio.playSound("res/sound/Explosion.wav",0);
+		explosionBombAudio.playSound(0);
 	}
 	
 	public Explosion explosionAt(int x, int y) {

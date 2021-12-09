@@ -11,7 +11,7 @@ public class DestroyableTile extends Tile {
 	private int _animate = 0;
 	protected boolean _destroyed = false;
 	protected int _timeToDisapear = 20;
-	protected Sprite _belowSprite = Sprite.grass; //default
+	protected Sprite _belowSprite = grass; //default
 	
 	public DestroyableTile(int x, int y, Sprite sprite) {
 		super(x, y, sprite);

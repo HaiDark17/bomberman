@@ -101,7 +101,7 @@ public class Player extends Mob {
 	protected void placeBomb(int x, int y) {
 		Bomb b = new Bomb(x, y, _board);
 		_board.addBomb(b);
-		audio.playSound( "res/sound/putBomb.wav",0);
+		placeBombAudio.playSound( 0);
 	}
 
 	private void clearBombs() {
@@ -130,7 +130,7 @@ public class Player extends Mob {
 		_alive = false;
 
 		_board.addLives(-1);
-		audio.playSound("res/sound/Hit.wav",0);
+		deadAudio.playSound(0);
 		Message msg = new Message("-1 LIVE", getXMessage(), getYMessage(), 2, Color.white, 14);
 		_board.addMessage(msg);
 	}
@@ -244,7 +244,7 @@ public class Player extends Mob {
 		if (p.isRemoved()) return;
 
 		_powerups.add(p);
-		audio.playSound("res/sound/upItem.wav",0);
+		upItemAudio.playSound(0);
 		p.setValues();
 	}
 

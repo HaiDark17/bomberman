@@ -12,12 +12,14 @@ import oop.bomberman.entities.Entity;
 import oop.bomberman.entities.mob.Player;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 
 public class Screen {
     protected int _width, _height;
     public int[] _pixels;
     private final int _transparentColor = 0xffff00ff; //pink with alpha channel (ff in the begining)
     private Font font;
+    public boolean isBasicMap = true;
 
     public static int xOffset = 0, yOffset = 0;
     
@@ -154,25 +156,32 @@ public class Screen {
 
     public void drawMenu(Graphics g) {
         BufferedImage background = null;
-
         try {
             background = ImageIO.read(new File("res/textures/menu.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        //Vẽ hình nền
-        g.drawImage(background, 0, 0, null);
+        Image backgroundFixed = background.getScaledInstance(Game.WIDTH * Game.SCALE, Game.HEIGHT* Game.SCALE, Image.SCALE_DEFAULT);
+        g.drawImage(backgroundFixed, 0, 0, null);
     }
 
     public void drawSetting(Graphics g) {
         BufferedImage setting = null;
+        font.deriveFont(Font.PLAIN, 10);
+        g.setFont(font);
+        g.setColor(Color.white);
         try {
-            setting = ImageIO.read(new File("res/textures/erangel.png"));
+            setting = ImageIO.read(new File("res/textures/options-table.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        g.drawImage(setting, Game.WIDTH + 50, Game.HEIGHT + 100, null);
+        Image settingFixed = setting.getScaledInstance(450,325,Image.SCALE_DEFAULT);
+        g.drawImage(settingFixed, Game.WIDTH - 100, Game.HEIGHT - 50, null);
+        if(isBasicMap) {
+            g.drawString("Erangel", Game.WIDTH + 120, Game.HEIGHT + 90);
+        }else{
+            g.drawString("Miramar", Game.WIDTH + 110, Game.HEIGHT + 90);
+        }
     }
 
     public int getWidth() {

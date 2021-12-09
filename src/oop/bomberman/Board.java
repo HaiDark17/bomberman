@@ -190,9 +190,9 @@ public class Board implements IRender {
 	 */
 	public void gamePause() {
 		_game.resetScreenDelay();
-		if(_screenToShow <= 0)
-			_screenToShow = 3;
+		_screenToShow = 5;
 		_game.pause();
+		_game.onSetting();
 	}
 
 	public void gameResume() {

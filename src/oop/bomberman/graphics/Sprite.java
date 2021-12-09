@@ -12,29 +12,6 @@ public class Sprite {
     // public static Sprite voidSprite = new Sprite(16, 0xffffff); //black
 
     /**
-     * Main entity.
-     */
-
-    public static Sprite portal = new Sprite(16, 0, 0, SpriteSheet.map, 14, 14);
-    public static Sprite bunker = new Sprite(16, 1, 0, SpriteSheet.map, 16, 16);
-    public static Sprite grass = new Sprite(16, 2, 0, SpriteSheet.map, 16, 16);
-
-    public static Sprite brick = new Sprite(16, 0, 1, SpriteSheet.map, 16, 16);
-    public static Sprite brick_exploded = new Sprite(16, 1, 1, SpriteSheet.map, 16, 16);
-    public static Sprite brick_exploded1 = new Sprite(16, 2, 1, SpriteSheet.map, 16, 16);
-    public static Sprite brick_exploded2 = new Sprite(16, 3, 1, SpriteSheet.map, 16, 16);
-
-    public static Sprite wall_top = new Sprite(16, 0, 2, SpriteSheet.map, 16, 16);
-    public static Sprite wall_left = new Sprite(16, 1, 2, SpriteSheet.map, 16, 16);
-    public static Sprite wall_right = new Sprite(16, 2, 2, SpriteSheet.map, 16, 16);
-    public static Sprite wall_down = new Sprite(16, 3, 2, SpriteSheet.map, 16, 16);
-
-    public static Sprite wall_corner0 = new Sprite(16, 0, 3, SpriteSheet.map, 16, 16);
-    public static Sprite wall_corner1 = new Sprite(16, 1, 3, SpriteSheet.map, 16, 16);
-    public static Sprite wall_corner2 = new Sprite(16, 2, 3, SpriteSheet.map, 16, 16);
-    public static Sprite wall_corner3 = new Sprite(16, 3, 3, SpriteSheet.map, 16, 16);
-
-    /**
      * Player.
      */
 
@@ -178,6 +155,11 @@ public class Sprite {
                 pixels[i + j * SIZE] = sheet.pixels[(i + x) + (j + y) * sheet.SIZE];
             }
         }
+    }
+
+    public void changeSheet(SpriteSheet s) {
+        this.sheet = s;
+        this.load();
     }
 
     /**

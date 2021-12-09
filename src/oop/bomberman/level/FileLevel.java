@@ -9,6 +9,7 @@ import java.util.StringTokenizer;
 
 
 import oop.bomberman.Board;
+import oop.bomberman.CommonVariables;
 import oop.bomberman.Game;
 import oop.bomberman.entities.LayeredEntity;
 import oop.bomberman.entities.mob.Player;
@@ -28,7 +29,7 @@ import oop.bomberman.exceptions.LoadLevelException;
 import oop.bomberman.graphics.Screen;
 import oop.bomberman.graphics.Sprite;
 
-public class FileLevel extends Level {
+public class FileLevel extends Level implements CommonVariables {
 	
 	public FileLevel(String path, Board board) throws LoadLevelException {
 		super(path, board);
@@ -76,60 +77,60 @@ public class FileLevel extends Level {
 		switch(c) {
 			// Map
 			case '6': // Top-left corner
-				board.addEntitie(pos, new WallTile(x, y, Sprite.wall_corner0));
+				board.addEntitie(pos, new WallTile(x, y, wall_corner0));
 				break;
 			case '7': // Top-right corner
-				board.addEntitie(pos, new WallTile(x, y, Sprite.wall_corner1));
+				board.addEntitie(pos, new WallTile(x, y, wall_corner1));
 				break;
 			case '8': // Bottom-right corner
-				board.addEntitie(pos, new WallTile(x, y, Sprite.wall_corner2));
+				board.addEntitie(pos, new WallTile(x, y, wall_corner2));
 				break;
 			case '9': // Bottom-left corner
-				board.addEntitie(pos, new WallTile(x, y, Sprite.wall_corner3));
+				board.addEntitie(pos, new WallTile(x, y, wall_corner3));
 				break;
 			case 'T': // Top border
-				board.addEntitie(pos, new WallTile(x, y, Sprite.wall_top));
+				board.addEntitie(pos, new WallTile(x, y, wall_top));
 				break;
 			case 'L': // Left border
-				board.addEntitie(pos, new WallTile(x, y, Sprite.wall_left));
+				board.addEntitie(pos, new WallTile(x, y, wall_left));
 				break;
 			case 'R': // Right border
-				board.addEntitie(pos, new WallTile(x, y, Sprite.wall_right));
+				board.addEntitie(pos, new WallTile(x, y, wall_right));
 				break;
 			case 'D': // Bottom border
-				board.addEntitie(pos, new WallTile(x, y, Sprite.wall_down));
+				board.addEntitie(pos, new WallTile(x, y, wall_down));
 				break;
 
 			case '#': // Wall
-				board.addEntitie(pos, new WallTile(x, y, Sprite.bunker));
+				board.addEntitie(pos, new WallTile(x, y, bunker));
 				break;
 			case '*': // Brick wall
 				board.addEntitie(pos, new LayeredEntity(x, y,
-						new SurfaceTile(x ,y, Sprite.grass),
-						new BrickTile(x ,y, Sprite.brick)) );
+						new SurfaceTile(x ,y, grass),
+						new BrickTile(x ,y, brick)) );
 				break;
 			case 'P': // Port
 				board.addEntitie(pos, new LayeredEntity(x, y,
-						new SurfaceTile(x ,y, Sprite.grass),
-						new PortalTile(x ,y, board, Sprite.portal),
-						new BrickTile(x ,y, Sprite.brick)) );
+						new SurfaceTile(x ,y, grass),
+						new PortalTile(x ,y, board, portal),
+						new BrickTile(x ,y, brick)) );
 				break;
 			case ' ': // Surface
-				board.addEntitie(pos, new SurfaceTile(x, y, Sprite.grass) );
+				board.addEntitie(pos, new SurfaceTile(x, y, grass) );
 				break;
 			case 'C': // Character
 				board.addMob( new Player(Coordinates.tileToPixel(x), Coordinates.tileToPixel(y) + Game.TILES_SIZE, board) );
 				Screen.setOffset(0, 0);
-				board.addEntitie(pos, new SurfaceTile(x, y, Sprite.grass) );
+				board.addEntitie(pos, new SurfaceTile(x, y, grass) );
 				break;
 
 			// Items
 			case 'B':
 				LayeredEntity layer = new LayeredEntity(x, y, 
-						new SurfaceTile(x ,y, Sprite.grass),
-						new BrickTile(x ,y, Sprite.brick));
+						new SurfaceTile(x ,y, grass),
+						new BrickTile(x ,y, brick));
 				
-				if(board.isPowerupUsed(x, y, level) == false) {
+				if(!board.isPowerupUsed(x, y, level)) {
 					layer.addBeforeTop(new PowerupBombs(x, y, level, Sprite.powerup_bombs));
 				}
 				
@@ -137,10 +138,10 @@ public class FileLevel extends Level {
 				break;
 			case 'S':
 				layer = new LayeredEntity(x, y, 
-						new SurfaceTile(x ,y, Sprite.grass),
-						new BrickTile(x ,y, Sprite.brick));
+						new SurfaceTile(x ,y, grass),
+						new BrickTile(x ,y, brick));
 				
-				if(board.isPowerupUsed(x, y, level) == false) {
+				if(!board.isPowerupUsed(x, y, level)) {
 					layer.addBeforeTop(new PowerupSpeed(x, y, level, Sprite.powerup_speed));
 				}
 				
@@ -148,10 +149,10 @@ public class FileLevel extends Level {
 				break;
 			case 'F':
 				layer = new LayeredEntity(x, y, 
-						new SurfaceTile(x ,y, Sprite.grass),
-						new BrickTile(x ,y, Sprite.brick));
+						new SurfaceTile(x ,y, grass),
+						new BrickTile(x ,y, brick));
 				
-				if(board.isPowerupUsed(x, y, level) == false) {
+				if(!board.isPowerupUsed(x, y, level)) {
 					layer.addBeforeTop(new PowerupFlames(x, y, level, Sprite.powerup_flames));
 				}
 				
@@ -161,27 +162,27 @@ public class FileLevel extends Level {
 			// Enemies
 			case '1':
 				board.addMob( new Balloom(Coordinates.tileToPixel(x), Coordinates.tileToPixel(y) + Game.TILES_SIZE, board));
-				board.addEntitie(pos, new SurfaceTile(x, y, Sprite.grass) );
+				board.addEntitie(pos, new SurfaceTile(x, y, grass) );
 				break;
 			case '2':
 				board.addMob( new Oneal(Coordinates.tileToPixel(x), Coordinates.tileToPixel(y) + Game.TILES_SIZE, board));
-				board.addEntitie(pos, new SurfaceTile(x, y, Sprite.grass) );
+				board.addEntitie(pos, new SurfaceTile(x, y, grass) );
 				break;
 			case '3':
 				board.addMob( new Doll(Coordinates.tileToPixel(x), Coordinates.tileToPixel(y) + Game.TILES_SIZE, board));
-				board.addEntitie(pos, new SurfaceTile(x, y, Sprite.grass) );
+				board.addEntitie(pos, new SurfaceTile(x, y, grass) );
 				break;
 			case '4':
 				board.addMob( new Minvo(Coordinates.tileToPixel(x), Coordinates.tileToPixel(y) + Game.TILES_SIZE, board));
-				board.addEntitie(pos, new SurfaceTile(x, y, Sprite.grass) );
+				board.addEntitie(pos, new SurfaceTile(x, y, grass) );
 				break;
 			case '5':
 				board.addMob( new Kondoria(Coordinates.tileToPixel(x), Coordinates.tileToPixel(y) + Game.TILES_SIZE, board));
-				board.addEntitie(pos, new SurfaceTile(x, y, Sprite.grass) );
+				board.addEntitie(pos, new SurfaceTile(x, y, grass) );
 				break;
 
 			default: 
-				board.addEntitie(pos, new SurfaceTile(x, y, Sprite.grass) );
+				board.addEntitie(pos, new SurfaceTile(x, y, grass) );
 				break;
 			}
 	}

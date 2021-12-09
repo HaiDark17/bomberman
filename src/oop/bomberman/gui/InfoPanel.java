@@ -4,107 +4,171 @@ import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 
+import oop.bomberman.CommonVariables;
 import oop.bomberman.Game;
 
-public class InfoPanel extends JPanel{
+public class InfoPanel extends JPanel implements CommonVariables {
+    private JLabel emptyLabel_1;
+    private JLabel emptyLabel_2;
+    private JLabel emptyLabel_3;
+    private JLabel emptyLabel_4;
 
-	private JLabel timeLabel;
-	private JLabel pointsLabel;
-	private JLabel livesLabel;
-	private JButton settingButton;
-	public boolean isSetting = false;
+    private JLabel timeLabel;
+    private JLabel pointsLabel;
+    private JLabel livesLabel;
+    private JLabel soundLabel;
+    private JLabel settingLabel;
 
-	private SettingPane setting;
+    private JButton settingButton;
+    private JButton soundButton;
 
-	public InfoPanel(Game game) {
-		setting = new SettingPane(game);
-		setLayout(new GridLayout(4,1));
 
-		timeLabel = new JLabel("Time: " + game.getBoard().getTime());
-		timeLabel.setForeground(Color.white);
-		timeLabel.setHorizontalAlignment(JLabel.CENTER);
+    private ImageIcon left_bar = new ImageIcon((new ImageIcon("res/textures/left-bar.png")).getImage().getScaledInstance(80, 30, Image.SCALE_DEFAULT));
+    private ImageIcon center_bar = new ImageIcon((new ImageIcon("res/textures/center-bar.png")).getImage().getScaledInstance(80, 30, Image.SCALE_DEFAULT));
+    private ImageIcon right_bar = new ImageIcon((new ImageIcon("res/textures/right-bar.png")).getImage().getScaledInstance(80, 30, Image.SCALE_DEFAULT));
+    private ImageIcon optionImg = new ImageIcon((new ImageIcon("res/textures/options.png")).getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
+    private ImageIcon soundOnImg = new ImageIcon((new ImageIcon("res/textures/sound.png")).getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
+    private ImageIcon soundOffImg = new ImageIcon((new ImageIcon("res/textures/mute.png")).getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 
-		pointsLabel = new JLabel("Points: " + game.getBoard().getPoints());
-		pointsLabel.setForeground(Color.white);
-		pointsLabel.setHorizontalAlignment(JLabel.CENTER);
+    public InfoPanel(Game game) {
+        setLayout(new GridLayout(1, 9));
 
-		livesLabel = new JLabel("Lives: " + game.getBoard().getLives());
-		livesLabel.setForeground(Color.white);
-		livesLabel.setHorizontalAlignment(JLabel.CENTER);
+        emptyLabel_1 = new JLabel();
+        emptyLabel_2 = new JLabel();
+        emptyLabel_3 = new JLabel();
+        emptyLabel_4 = new JLabel();
 
-		settingButton = new JButton("Setting");
-		settingButton.setBackground(Color.BLACK);
-		settingButton.setForeground(Color.white);
-		settingButton.setBorder(new LineBorder(Color.BLACK));
-		settingButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        timeLabel = new JLabel();
+        timeLabel.setIcon(left_bar);
+        timeLabel.setText("Time: " + game.getBoard().getTime());
+        timeLabel.setForeground(Color.white);
+        timeLabel.setHorizontalAlignment(JLabel.RIGHT);
+        timeLabel.setHorizontalTextPosition(JLabel.CENTER);
 
-		settingButton.addMouseListener(new MouseListener() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+        pointsLabel = new JLabel();
+        pointsLabel.setIcon(center_bar);
+        pointsLabel.setText("Points: " + game.getBoard().getPoints());
+        pointsLabel.setForeground(Color.white);
+        pointsLabel.setHorizontalAlignment(JLabel.CENTER);
+        pointsLabel.setHorizontalTextPosition(JLabel.CENTER);
 
-			}
+        livesLabel = new JLabel();
+        livesLabel.setIcon(right_bar);
+        livesLabel.setText("Lives: " + game.getBoard().getLives());
+        livesLabel.setForeground(Color.white);
+        livesLabel.setHorizontalAlignment(JLabel.LEFT);
+        livesLabel.setHorizontalTextPosition(JLabel.CENTER);
 
-			@Override
-			public void mousePressed(MouseEvent e) {
+        soundLabel = new JLabel();
+        soundLabel.setLayout(new BorderLayout());
 
-			}
+        soundButton = new JButton();
+        soundButton.setIcon(soundOnImg);
+        soundButton.setBackground(basicColor);
+        soundButton.setBorder(BorderFactory.createEmptyBorder());
+        soundButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        soundButton.setModel(new FixedStateButtonModel());
+        soundButton.setFocusPainted(false);
+        soundButton.setPreferredSize(new Dimension(35, 35));
+        soundButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (soundButton.getIcon().equals(soundOnImg)) {
+                    disableSound();
+                    soundButton.setIcon(soundOffImg);
+                } else {
+                    enableSound();
+                    soundButton.setIcon(soundOnImg);
+                }
 
-			@Override
-			public void mouseReleased(MouseEvent e) {
+            }
+        });
+        soundLabel.add(soundButton, BorderLayout.EAST);
 
-			}
+        settingLabel = new JLabel();
+        settingLabel.setLayout(new BorderLayout());
 
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				settingButton.setBackground(Color.green);
-			}
+        settingButton = new JButton();
+        settingButton.setBackground(basicColor);
+        settingButton.setBorder(BorderFactory.createEmptyBorder());
+        settingButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        settingButton.setIcon(optionImg);
+        settingButton.setModel(new FixedStateButtonModel());
+        settingButton.setFocusPainted(false);
+        settingButton.setPreferredSize(new Dimension(35, 35));
+        settingButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if(!game.isPaused()){
+                    game.getBoard().gamePause();
+                }
+            }
+        });
+        settingLabel.add(settingButton, BorderLayout.WEST);
 
-			@Override
-			public void mouseExited(MouseEvent e) {
-				settingButton.setBackground(Color.black);
-			}
-		});
+        add(emptyLabel_1);
+        add(emptyLabel_2);
 
-		settingButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				setting.setVisible(true);
-				/*
-				if(!isSetting) {
-					isSetting = true;
-					game.getBoard().setShow(5);
+        add(timeLabel);
+        add(pointsLabel);
+        add(livesLabel);
+        add(emptyLabel_4);
+        add(soundLabel);
+        add(settingLabel);
 
-				}else{
-					isSetting = false;
-				}
+        setBackground(basicColor);
+        setPreferredSize(new Dimension(0, 40));
+    }
 
-				 */
-			}
-		});
+    private void disableSound() {
+        mainAudio.stopSound();
+        placeBombAudio.stopSound();
+        explosionBombAudio.stopSound();
+        deadAudio.stopSound();
+        upItemAudio.stopSound();
+        brickBreakAudio.stopSound();
+    }
 
-		add(timeLabel);
-		add(pointsLabel);
-		add(livesLabel);
-		add(settingButton);
+    private void enableSound() {
+        mainAudio.setDisabled(false);
+        placeBombAudio.setDisabled(false);
+        explosionBombAudio.setDisabled(false);
+        deadAudio.setDisabled(false);
+        upItemAudio.setDisabled(false);
+        brickBreakAudio.setDisabled(false);
+        mainAudio.playSound(100);
+    }
 
-		setBackground(Color.BLACK);
-		setPreferredSize(new Dimension(100, 0));
-	}
+    public void setTime(int t) {
+        this.timeLabel.setText("Time: " + t);
+    }
 
-	public void setTime(int t) {
-		timeLabel.setText("Time: " + t);
-	}
+    public void setLives(int t) {
+        this.livesLabel.setText("Lives: " + t);
+    }
 
-	public void setLives(int t) {
-		livesLabel.setText("Lives: " + t);
+    public void setPoints(int t) {
+        this.pointsLabel.setText("Points: " + t);
+    }
 
-	}
+    public void changeBackground(Color c){
+        setBackground(c);
+        soundButton.setBackground(c);
+        settingButton.setBackground(c);
+    }
+}
 
-	public void setPoints(int t) {
-		pointsLabel.setText("Points: " + t);
-	}
+class FixedStateButtonModel extends DefaultButtonModel {
+    FixedStateButtonModel() {
+    }
 
+    public boolean isPressed() {
+        return false;
+    }
+
+    public boolean isRollover() {
+        return false;
+    }
+
+    public void setRollover(boolean b) {
+    }
 }

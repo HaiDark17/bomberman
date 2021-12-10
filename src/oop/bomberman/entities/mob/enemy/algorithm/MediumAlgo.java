@@ -3,6 +3,8 @@ package oop.bomberman.entities.mob.enemy.algorithm;
 import oop.bomberman.entities.mob.Player;
 import oop.bomberman.entities.mob.enemy.Enemy;
 
+import static oop.bomberman.CommonVariables.matrix;
+
 public class MediumAlgo extends Algorithm {
     Player player;
     Enemy enemy;
@@ -13,7 +15,7 @@ public class MediumAlgo extends Algorithm {
     }
 
     @Override
-    public int calculateDirection() {
+    public int getDirection() {
         if (player == null) {
             return random.nextInt(4);
         }

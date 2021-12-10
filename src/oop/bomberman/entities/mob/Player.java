@@ -28,7 +28,7 @@ public class Player extends Mob {
 
 	protected int _timeBetweenPutBombs = 0;
 
-	public static List<Powerup> _powerups = new ArrayList<Powerup>();
+	public static List<Powerup> _powerups = new ArrayList<>();
 
 
 	public Player(int x, int y, Board board) {
@@ -100,6 +100,8 @@ public class Player extends Mob {
 
 	protected void placeBomb(int x, int y) {
 		Bomb b = new Bomb(x, y, _board);
+		Enemy.avoidBomb(x, y);
+		//System.out.println(x + " " + y);
 		_board.addBomb(b);
 		placeBombAudio.playSound( 0);
 	}
@@ -177,6 +179,7 @@ public class Player extends Mob {
 
 			Entity a = _board.getEntity(xt, yt, this);
 			if (!a.collide(this) ) {
+				/*
 				if (_input.right || _input.left) {
 					if ((a.getY() * Game.TILES_SIZE + 14 > _y
 							&& a.getY() * Game.TILES_SIZE < _y)) {
@@ -198,8 +201,10 @@ public class Player extends Mob {
 						_x -= 1;
 					}
 				}
+				*/
 				return false;
 			}
+
 		}
 		return true;
 	}

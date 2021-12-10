@@ -12,7 +12,7 @@ public class Oneal extends Enemy {
         super(x, y, board, Sprite.oneal_dead, Game.getPlayerSpeed(), 200);
         _sprite = Sprite.oneal_left1;
         algorithm = new MediumAlgo(_board.getPlayer(), this);
-        _direction = algorithm.calculateDirection();
+        _direction = algorithm.getDirection();
     }
 
     @Override

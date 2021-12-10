@@ -13,7 +13,7 @@ public class Doll extends Enemy {
 		_sprite = Sprite.doll_right1;
 		
 		algorithm = new SimpleAlgo();
-		_direction = algorithm.calculateDirection();
+		_direction = algorithm.getDirection();
 	}
 	
 	/*

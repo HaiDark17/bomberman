@@ -6,8 +6,6 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.StringTokenizer;
 
-
-
 import oop.bomberman.Board;
 import oop.bomberman.CommonVariables;
 import oop.bomberman.Game;
@@ -39,9 +37,8 @@ public class FileLevel extends Level implements CommonVariables {
 	public void loadLevel(String path) throws LoadLevelException {
 		try {
 			URL absPath = FileLevel.class.getResource("/" + path);
-			
-			BufferedReader in = new BufferedReader(
-			        new InputStreamReader(absPath.openStream()));
+			assert absPath != null;
+			BufferedReader in = new BufferedReader(new InputStreamReader(absPath.openStream()));
 
 			String data = in.readLine();
 			StringTokenizer tokens = new StringTokenizer(data);
@@ -116,9 +113,12 @@ public class FileLevel extends Level implements CommonVariables {
 						new BrickTile(x ,y, brick)) );
 				break;
 			case ' ': // Surface
+				//System.out.println(x + " " +y);
+				matrix[y][x] = 1;
 				board.addEntitie(pos, new SurfaceTile(x, y, grass) );
 				break;
 			case 'C': // Character
+				matrix[y][x] = 1;
 				board.addMob( new Player(Coordinates.tileToPixel(x), Coordinates.tileToPixel(y) + Game.TILES_SIZE, board) );
 				Screen.setOffset(0, 0);
 				board.addEntitie(pos, new SurfaceTile(x, y, grass) );
@@ -161,27 +161,33 @@ public class FileLevel extends Level implements CommonVariables {
 
 			// Enemies
 			case '1':
+				matrix[y][x] = 1;
 				board.addMob( new Balloom(Coordinates.tileToPixel(x), Coordinates.tileToPixel(y) + Game.TILES_SIZE, board));
 				board.addEntitie(pos, new SurfaceTile(x, y, grass) );
 				break;
 			case '2':
+				matrix[y][x] = 1;
 				board.addMob( new Oneal(Coordinates.tileToPixel(x), Coordinates.tileToPixel(y) + Game.TILES_SIZE, board));
 				board.addEntitie(pos, new SurfaceTile(x, y, grass) );
 				break;
 			case '3':
+				matrix[y][x] = 1;
 				board.addMob( new Doll(Coordinates.tileToPixel(x), Coordinates.tileToPixel(y) + Game.TILES_SIZE, board));
 				board.addEntitie(pos, new SurfaceTile(x, y, grass) );
 				break;
 			case '4':
+				matrix[y][x] = 1;
 				board.addMob( new Minvo(Coordinates.tileToPixel(x), Coordinates.tileToPixel(y) + Game.TILES_SIZE, board));
 				board.addEntitie(pos, new SurfaceTile(x, y, grass) );
 				break;
 			case '5':
+				matrix[y][x] = 1;
 				board.addMob( new Kondoria(Coordinates.tileToPixel(x), Coordinates.tileToPixel(y) + Game.TILES_SIZE, board));
 				board.addEntitie(pos, new SurfaceTile(x, y, grass) );
 				break;
 
-			default: 
+			default:
+				matrix[y][x] = 1;
 				board.addEntitie(pos, new SurfaceTile(x, y, grass) );
 				break;
 			}

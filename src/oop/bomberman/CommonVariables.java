@@ -7,6 +7,9 @@ import oop.bomberman.graphics.SpriteSheet;
 import java.awt.*;
 
 public interface CommonVariables {
+    int MAP_WIDTH = 31;
+    int MAP_HEIGHT = 13;
+    int[][] matrix = new int[MAP_HEIGHT][MAP_WIDTH]; // map size
 
     Audio mainAudio = new Audio("res/sound/stage.wav");
     Audio placeBombAudio = new Audio("res/sound/putBomb.wav");

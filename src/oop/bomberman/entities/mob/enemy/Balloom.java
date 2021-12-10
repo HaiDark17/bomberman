@@ -3,6 +3,8 @@ package oop.bomberman.entities.mob.enemy;
 
 import oop.bomberman.Board;
 import oop.bomberman.Game;
+import oop.bomberman.entities.mob.enemy.algorithm.HighAlgo;
+import oop.bomberman.entities.mob.enemy.algorithm.MediumAlgo;
 import oop.bomberman.entities.mob.enemy.algorithm.SimpleAlgo;
 import oop.bomberman.graphics.Sprite;
 
@@ -10,12 +12,11 @@ public class Balloom extends Enemy {
 	
 	
 	public Balloom(int x, int y, Board board) {
-		super(x, y, board, Sprite.balloom_dead, Game.getPlayerSpeed() / 2, 100);
+		super(x, y, board, Sprite.balloom_dead, Game.getPlayerSpeed()/2, 100);
 		
 		_sprite = Sprite.balloom_left1;
-		
-		algorithm = new SimpleAlgo();
-		_direction = algorithm.calculateDirection();
+		algorithm = new HighAlgo(_board.getPlayer(), this);
+		_direction = algorithm.getDirection();
 	}
 	
 	/*

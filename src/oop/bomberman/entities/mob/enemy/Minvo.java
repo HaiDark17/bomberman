@@ -14,7 +14,7 @@ public class Minvo extends Enemy {
 		_sprite = Sprite.minvo_right1;
 		
 		algorithm = new MediumAlgo(_board.getPlayer(), this);
-		_direction  = algorithm.calculateDirection();
+		_direction  = algorithm.getDirection();
 	}
 	/*
 	|--------------------------------------------------------------------------

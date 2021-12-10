@@ -41,6 +41,49 @@ public abstract class Enemy extends Mob {
         deadSprite = dead;
     }
 
+    public static void avoidBomb(int x, int y) {
+        matrix[y][x] = 0;
+        // Up
+        if (y - 1 >= 0 && matrix[y - 1][x] == 1) {
+            matrix[y - 1][x] = -1;
+        }
+        // Right
+        if (x + 1 < MAP_WIDTH && matrix[y][x + 1] == 1) {
+            matrix[y][x + 1] = -1;
+        }
+        // Down
+        if (y + 1 < MAP_HEIGHT && matrix[y + 1][x] == 1) {
+            matrix[y + 1][x] = -1;
+        }
+        // Left
+        if (x - 1 >= 0 && matrix[y][x - 1] == 1) {
+            matrix[y][x - 1] = -1;
+        }
+    }
+
+    public static void resetAvoidBomb(int x, int y) {
+        matrix[y][x] = 1;
+
+        // Up
+        if (y - 1 >= 0 && matrix[y - 1][x] == -1) {
+            matrix[y - 1][x] = 1;
+        }
+        // Right
+        if (x + 1 < MAP_WIDTH && matrix[y][x + 1] == -1) {
+            matrix[y][x + 1] = 1;
+        }
+        // Down
+        if (y + 1 < MAP_HEIGHT && matrix[y + 1][x] == -1) {
+            matrix[y + 1][x] = 1;
+        }
+        // Left
+        if (x - 1 >= 0 && matrix[y][x - 1] == -1) {
+            matrix[y][x - 1] = 1;
+        }
+
+
+    }
+
     @Override
     public void update() {
         animate();
@@ -50,8 +93,7 @@ public abstract class Enemy extends Mob {
             return;
         }
 
-        if (_alive)
-            calculateMove();
+        calculateMove();
     }
 
     @Override
@@ -73,7 +115,7 @@ public abstract class Enemy extends Mob {
     public void calculateMove() {
         int xa = 0, ya = 0;
         if (steps <= 0) {
-            _direction = algorithm.calculateDirection();
+            _direction = algorithm.getDirection();
             steps = MAX_STEPS;
         }
 
@@ -95,8 +137,8 @@ public abstract class Enemy extends Mob {
     @Override
     public void move(double xa, double ya) {
         if (!_alive) {
-			return;
-		}
+            return;
+        }
         _y += ya;
         _x += xa;
     }
@@ -165,8 +207,7 @@ public abstract class Enemy extends Mob {
         } else {
             if (finalAnimation > 0) {
                 --finalAnimation;
-            }
-            else {
+            } else {
                 remove();
             }
         }

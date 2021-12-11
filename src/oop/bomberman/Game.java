@@ -13,14 +13,13 @@ import java.io.FileReader;
 import java.io.IOException;
 
 
-import oop.bomberman.audio.Audio;
 import oop.bomberman.exceptions.BombermanException;
 import oop.bomberman.graphics.Screen;
-import oop.bomberman.graphics.Sprite;
-import oop.bomberman.graphics.SpriteSheet;
 import oop.bomberman.gui.CodePane;
 import oop.bomberman.gui.Frame;
 import oop.bomberman.input.Keyboard;
+
+import javax.swing.*;
 
 public class Game extends Canvas implements MouseListener, MouseMotionListener, CommonVariables {
 
@@ -60,6 +59,8 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener, 
     private boolean _menu = true;
     private boolean _paused = true;
     private boolean isSetting = false;
+    private boolean isAboutPane = false;
+    //public boolean isChooseNewGame = false;
 
 
     private Board _board;
@@ -118,7 +119,7 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener, 
             return;
         }
 
-        screen.clear();
+        //screen.clear();
 
         Graphics g = bs.getDrawGraphics();
 
@@ -135,6 +136,7 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener, 
 
     public void start() {
         readHighscore();
+
         mainAudio.playSound(100);
         while (_menu) {
             renderScreen();
@@ -161,11 +163,13 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener, 
                 delta--;
             }
 
+
             if (_paused) {
                 if (_screenDelay <= 0) {
                     _board.setShow(5);
                     _paused = false;
                 }
+
                 renderScreen();
             } else {
                 renderGame();
@@ -215,10 +219,34 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener, 
             _menu = false;
             _running = true;
         }
-        Rectangle exitSettingButton = new Rectangle(Game.WIDTH + 300, Game.HEIGHT - 50, 50, 50);
-        if (exitSettingButton.contains(e.getX(), e.getY()) && _paused) {
-            isSetting = false;
-            getBoard().gameResume();
+
+        Rectangle optionButton = new Rectangle(Game.WIDTH + 50, Game.HEIGHT + 210, 150, 50);
+        if (optionButton.contains(e.getX(), e.getY()) && _menu && !isSetting) {
+            isSetting = true;
+            getBoard().setShow(5);
+        }
+
+        Rectangle aboutButton = new Rectangle(Game.WIDTH + 50, Game.HEIGHT + 280, 150, 50);
+        if(aboutButton.contains(e.getX(), e.getY()) && _menu){
+            isAboutPane = true;
+            getBoard().setShow(6);
+        }
+
+        Rectangle exitAboutButton = new Rectangle(Game.WIDTH + 370, Game.HEIGHT - 100, 60,60);
+        if(exitAboutButton.contains(e.getX(), e.getY()) && isAboutPane){
+            isAboutPane = false;
+            getBoard().setShow(4);
+        }
+
+        Rectangle exitSettingButton = new Rectangle(Game.WIDTH + 300, Game.HEIGHT - 100, 50, 50);
+        if (exitSettingButton.contains(e.getX(), e.getY()) && (_paused || isSetting)) {
+            if (_menu) {
+                isSetting = false;
+                getBoard().setShow(4);
+            } else {
+                isSetting = false;
+                getBoard().gameResume();
+            }
             if (screen.isBasicMap) {
                 _frame.get_infopanel().changeBackground(basicColor);
             } else {
@@ -226,8 +254,9 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener, 
             }
         }
 
-        Rectangle changeMapButton = new Rectangle(Game.WIDTH + 270, Game.HEIGHT + 70, 30, 30);
-        Rectangle changeMapButton_1 = new Rectangle(Game.WIDTH + 70, Game.HEIGHT + 70, 30, 30);
+        Rectangle changeMapButton = new Rectangle(Game.WIDTH + 270, Game.HEIGHT + 20, 30, 30);
+        Rectangle changeMapButton_1 = new Rectangle(Game.WIDTH + 70, Game.HEIGHT + 20, 30, 30);
+
         if (changeMapButton.contains(e.getX(), e.getY()) && _paused) {
             if (screen.isBasicMap) {
                 map.modifySpriteSheet("/textures/miramar.png", 64);
@@ -252,11 +281,27 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener, 
             }
         }
 
-        Rectangle codeButton = new Rectangle(Game.WIDTH - 60, Game.HEIGHT + 150, 120, 50);
-        if(codeButton.contains(e.getX(), e.getY()) && _paused){
+        Rectangle codeButton = new Rectangle(Game.WIDTH - 60, Game.HEIGHT + 100, 120, 50);
+        if (codeButton.contains(e.getX(), e.getY()) && _paused) {
             codePane.setVisible(true);
         }
-
+/*
+        Rectangle okButton = new Rectangle(Game.WIDTH + 90, Game.HEIGHT + 190, 100, 50);
+        if (okButton.contains(e.getX(), e.getY()) && (isSetting)) {
+            if (_menu) {
+                isSetting = false;
+                getBoard().setShow(4);
+            } else {
+                isSetting = false;
+                getBoard().gameResume();
+            }
+            if (screen.isBasicMap) {
+                _frame.get_infopanel().changeBackground(basicColor);
+            } else {
+                _frame.get_infopanel().changeBackground(desertColor);
+            }
+        }
+*/
         Rectangle replayButton = new Rectangle(310, 412, 105, 30);
         if (replayButton.contains(e.getX(), e.getY())) {
             _board.changeLevel(1);
@@ -268,18 +313,35 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener, 
     @Override
     public void mouseMoved(MouseEvent e) {
         Rectangle playButton = new Rectangle(Game.WIDTH + 50, Game.HEIGHT + 130, 150, 50);
-        if (_menu) {
-            if (playButton.contains(e.getX(), e.getY())) {
+        Rectangle optionButton = new Rectangle(Game.WIDTH + 50, Game.HEIGHT + 210, 150, 50);
+        Rectangle aboutButton = new Rectangle(Game.WIDTH + 50, Game.HEIGHT + 280, 150, 50);
+
+        if (_menu && !isSetting && !isAboutPane) {
+            if (playButton.contains(e.getX(), e.getY())
+                    || optionButton.contains(e.getX(), e.getY())
+                    || aboutButton.contains(e.getX(), e.getY())) {
                 setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             } else {
                 setCursor(Cursor.getDefaultCursor());
             }
         }
 
-        Rectangle exitSettingButton = new Rectangle(Game.WIDTH + 300, Game.HEIGHT - 50, 50, 50);
-        Rectangle changeMapButton = new Rectangle(Game.WIDTH + 270, Game.HEIGHT + 70, 30, 30);
-        Rectangle changeMapButton_1 = new Rectangle(Game.WIDTH + 70, Game.HEIGHT + 70, 30, 30);
-        Rectangle codeButton = new Rectangle(Game.WIDTH - 60, Game.HEIGHT + 150, 120, 50);
+        Rectangle exitAbout = new Rectangle(Game.WIDTH + 370, Game.HEIGHT - 100, 60,60);
+        if(isAboutPane){
+            if(exitAbout.contains(e.getX(), e.getY())){
+                setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            }else{
+                setCursor(Cursor.getDefaultCursor());
+            }
+        }
+
+
+        Rectangle exitSettingButton = new Rectangle(Game.WIDTH + 300, Game.HEIGHT - 100, 50, 50);
+        Rectangle changeMapButton = new Rectangle(Game.WIDTH + 270, Game.HEIGHT + 20, 30, 30);
+        Rectangle changeMapButton_1 = new Rectangle(Game.WIDTH + 70, Game.HEIGHT + 20, 30, 30);
+        //Rectangle okButton = new Rectangle(Game.WIDTH + 90, Game.HEIGHT + 240, 100, 50);
+        Rectangle codeButton = new Rectangle(Game.WIDTH - 60, Game.HEIGHT + 100, 120, 50);
+
         if (isSetting) {
             if (exitSettingButton.contains(e.getX(), e.getY())
                     || changeMapButton.contains(e.getX(), e.getY())
@@ -289,13 +351,23 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener, 
             } else {
                 setCursor(Cursor.getDefaultCursor());
             }
+            if (_menu) {
+                if (exitSettingButton.contains(e.getX(), e.getY())
+                        || changeMapButton.contains(e.getX(), e.getY())
+                        || changeMapButton_1.contains(e.getX(), e.getY())
+                        || codeButton.contains(e.getX(), e.getY())) {
+                    setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                } else {
+                    setCursor(Cursor.getDefaultCursor());
+                }
+            }
         }
-
 
         if (!_menu && !isSetting) {
             setCursor(Cursor.getDefaultCursor());
         }
     }
+
 
     @Override
     public void mouseDragged(MouseEvent e) {
@@ -380,6 +452,10 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener, 
         return _menu;
     }
 
+    public void set_menu(boolean _menu) {
+        this._menu = _menu;
+    }
+
     public void stop() {
         _running = false;
     }
@@ -400,8 +476,12 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener, 
         _paused = true;
     }
 
-    public void onSetting() {
-        isSetting = true;
+    public void setSetting(boolean _isSetting) {
+        this.isSetting = _isSetting;
+    }
+
+    public boolean isSetting() {
+        return isSetting;
     }
 
     public Screen getScreen() {

@@ -19,10 +19,11 @@ public class InfoPanel extends JPanel implements CommonVariables {
     private JLabel livesLabel;
     private JLabel soundLabel;
     private JLabel settingLabel;
+    private JLabel resetLabel;
 
     private JButton settingButton;
     private JButton soundButton;
-
+    private JButton resetButton;
 
     private ImageIcon left_bar = new ImageIcon((new ImageIcon("res/textures/left-bar.png")).getImage().getScaledInstance(80, 30, Image.SCALE_DEFAULT));
     private ImageIcon center_bar = new ImageIcon((new ImageIcon("res/textures/center-bar.png")).getImage().getScaledInstance(80, 30, Image.SCALE_DEFAULT));
@@ -30,6 +31,7 @@ public class InfoPanel extends JPanel implements CommonVariables {
     private ImageIcon optionImg = new ImageIcon((new ImageIcon("res/textures/options.png")).getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
     private ImageIcon soundOnImg = new ImageIcon((new ImageIcon("res/textures/sound.png")).getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
     private ImageIcon soundOffImg = new ImageIcon((new ImageIcon("res/textures/mute.png")).getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
+    private ImageIcon resetImg = new ImageIcon((new ImageIcon("res/textures/reset.png")).getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 
     public InfoPanel(Game game) {
         setLayout(new GridLayout(1, 9));
@@ -63,6 +65,7 @@ public class InfoPanel extends JPanel implements CommonVariables {
         soundLabel = new JLabel();
         soundLabel.setLayout(new BorderLayout());
 
+
         soundButton = new JButton();
         soundButton.setIcon(soundOnImg);
         soundButton.setBackground(basicColor);
@@ -70,7 +73,7 @@ public class InfoPanel extends JPanel implements CommonVariables {
         soundButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         soundButton.setModel(new FixedStateButtonModel());
         soundButton.setFocusPainted(false);
-        soundButton.setPreferredSize(new Dimension(35, 35));
+        soundButton.setPreferredSize(new Dimension(30, 30));
         soundButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (soundButton.getIcon().equals(soundOnImg)) {
@@ -105,6 +108,26 @@ public class InfoPanel extends JPanel implements CommonVariables {
         });
         settingLabel.add(settingButton, BorderLayout.WEST);
 
+        resetLabel = new JLabel();
+        resetLabel.setLayout(new BorderLayout());
+
+        resetButton = new JButton();
+        resetButton.setBackground(basicColor);
+        resetButton.setBorder(BorderFactory.createEmptyBorder());
+        resetButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        resetButton.setIcon(resetImg);
+        resetButton.setModel(new FixedStateButtonModel());
+        resetButton.setFocusPainted(false);
+        resetButton.setPreferredSize(new Dimension(35,35));
+        resetButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                game.getBoard().newGame();
+            }
+        });
+        resetLabel.add(resetButton, BorderLayout.WEST);
+
+
         add(emptyLabel_1);
         add(emptyLabel_2);
 
@@ -114,6 +137,7 @@ public class InfoPanel extends JPanel implements CommonVariables {
         add(emptyLabel_4);
         add(soundLabel);
         add(settingLabel);
+        add(resetLabel);
 
         setBackground(basicColor);
         setPreferredSize(new Dimension(0, 40));
@@ -154,6 +178,7 @@ public class InfoPanel extends JPanel implements CommonVariables {
         setBackground(c);
         soundButton.setBackground(c);
         settingButton.setBackground(c);
+        resetButton.setBackground(c);
     }
 }
 

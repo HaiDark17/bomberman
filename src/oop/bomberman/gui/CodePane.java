@@ -32,11 +32,19 @@ public class CodePane extends JFrame implements ActionListener {
         if(frame.validCode(_code)) {
             frame.changeLevelByCode(_code);
             valid = true;
+            dispose();
         } else {
-            JOptionPane.showMessageDialog(frame,
-                    "That code isn't correct! Please enter the code again!",
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE);
+            if(frame._gamepane.getGame().getMenu()){
+                JOptionPane.showMessageDialog(frame,
+                        "You haven't started the game yet! Please start the game to change level by code!",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }else {
+                JOptionPane.showMessageDialog(frame,
+                        "That code isn't correct! Please enter the code again!",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
         }
 
     }

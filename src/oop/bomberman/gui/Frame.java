@@ -22,8 +22,8 @@ public class Frame extends JFrame{
 		_gamepane = new GamePanel(this);
 		_infopanel = new InfoPanel(_gamepane.getGame());
 
-		_containerpane.add(_infopanel, BorderLayout.PAGE_START);
-		_containerpane.add(_gamepane, BorderLayout.PAGE_END);
+		_containerpane.add(_infopanel, BorderLayout.NORTH);
+		_containerpane.add(_gamepane, BorderLayout.CENTER);
 
 		_game = _gamepane.getGame();
 		_infopanel.setVisible(false);
@@ -81,6 +81,9 @@ public class Frame extends JFrame{
 	}
 
 	public boolean validCode(String str) {
+		if(_gamepane.getGame().getMenu()){
+			return false;
+		}
 		return _game.getBoard().getLevel().validCode(str) != -1;
 	}
 

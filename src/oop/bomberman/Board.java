@@ -143,7 +143,12 @@ public class Board implements IRender {
 	public void changeLevelByCode(String str) {
 		int i = _level.validCode(str);
 
-		if(i != -1) changeLevel(i + 1);
+		if(i != -1){
+			if(_game.isSetting()){
+				_game.setSetting(false);
+			}
+			changeLevel(i + 1);
+		}
 	}
 
 	public boolean isPowerupUsed(int x, int y, int level) {
@@ -192,13 +197,19 @@ public class Board implements IRender {
 		_game.resetScreenDelay();
 		_screenToShow = 5;
 		_game.pause();
-		_game.onSetting();
+		_game.setSetting(true);
 	}
 
 	public void gameResume() {
 		_game.resetScreenDelay();
 		_screenToShow = -1;
 		_game.run();
+	}
+
+	public void test() {
+		_game.resetScreenDelay();
+		_screenToShow = 7;
+		_game.pause();
 	}
 
 	/*
@@ -223,6 +234,12 @@ public class Board implements IRender {
 				break;
 			case 5:
 				_screen.drawSetting(g);
+				break;
+			case 6:
+				_screen.drawAbout(g);
+				break;
+			case 7:
+				_screen.drawNewGameNoti(g);
 				break;
 		}
 	}

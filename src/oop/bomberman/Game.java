@@ -136,7 +136,18 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener, 
 
     public void start() {
         readHighscore();
-
+        JWindow window = new JWindow();
+        window.getContentPane().add(
+                new JLabel("", new ImageIcon("res/textures/intro.gif"), SwingConstants.CENTER));
+        window.setBounds(600, 215, 720, 600);
+        window.setVisible(true);
+        try {
+            Thread.sleep(4900);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        window.setVisible(false);
+        window.dispose();
         mainAudio.playSound(100);
         while (_menu) {
             renderScreen();

@@ -34,7 +34,7 @@ public class Screen implements CommonVariables {
     private Image chooseNewGameImageFixed = null;
 
     public static int xOffset = 0, yOffset = 0;
-    
+
     public Screen(int width, int height) {
         _width = width;
         _height = height;
@@ -46,14 +46,14 @@ public class Screen implements CommonVariables {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        settingFixed = setting.getScaledInstance(450,325,Image.SCALE_DEFAULT);
+        settingFixed = setting.getScaledInstance(450, 325, Image.SCALE_DEFAULT);
 
         try {
             background = ImageIO.read(new File("res/textures/menu.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        backgroundFixed = background.getScaledInstance(Game.WIDTH * Game.SCALE, Game.HEIGHT* Game.SCALE, Image.SCALE_DEFAULT);
+        backgroundFixed = background.getScaledInstance(Game.WIDTH * Game.SCALE, Game.HEIGHT * Game.SCALE, Image.SCALE_DEFAULT);
 
         try {
             aboutImage = ImageIO.read(new File("res/textures/about-table.png"));
@@ -61,12 +61,12 @@ public class Screen implements CommonVariables {
             e.printStackTrace();
         }
 
-        try{
+        try {
             chooseNewGameImage = ImageIO.read(new File("res/textures/new-game.png"));
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        chooseNewGameImageFixed = chooseNewGameImage.getScaledInstance(266,100,Image.SCALE_DEFAULT);
+        chooseNewGameImageFixed = chooseNewGameImage.getScaledInstance(266, 100, Image.SCALE_DEFAULT);
     }
 
     public void clear() {
@@ -134,34 +134,32 @@ public class Screen implements CommonVariables {
     | Game Screens
     |--------------------------------------------------------------------------
      */
+
     public void intializeFont() {
         try {
             File fontFile = new File("res/font/VBRUSHTB.ttf");
             font = Font.createFont(Font.TRUETYPE_FONT, fontFile).deriveFont(Font.PLAIN, 60);
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             ge.registerFont(font);
-        } catch (IOException|FontFormatException e) {
+        } catch (IOException | FontFormatException e) {
             //Handle exception
         }
     }
-    public void drawEndGame(Graphics g, int points, String code) {
-        g.setColor(Color.black);
-        g.fillRect(0, 0, getRealWidth(), getRealHeight());
 
-        Font font = new Font("Arial", Font.PLAIN, 20 * Game.SCALE);
-        g.setFont(font);
+    public void drawEndGame(Graphics g, int points, int level) {
+        BufferedImage image = null;
+        try {
+            image = ImageIO.read(new File("res/textures/score-table.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        int targetWidth = image.getWidth() * Game.SCALE / 4;
+        int targetHeight = image.getHeight() * Game.SCALE / 4;
+        Image scoreTable = image.getScaledInstance(targetWidth, targetHeight, Image.SCALE_DEFAULT);
+        g.setFont(font.deriveFont(Font.PLAIN, 12 * Game.SCALE));
         g.setColor(Color.white);
-        drawCenteredString("GAME OVER", getRealWidth(), getRealHeight(), g);
-
-        font = new Font("Arial", Font.PLAIN, 10 * Game.SCALE);
-        g.setFont(font);
-        g.setColor(Color.yellow);
-        drawCenteredString("POINTS: " + points, getRealWidth(), getRealHeight() + (Game.TILES_SIZE * 2) * Game.SCALE, g);
-
-        font = new Font("Arial", Font.PLAIN, 10 * Game.SCALE);
-        g.setFont(font);
-        g.setColor(Color.GRAY);
-        drawCenteredString(code, getRealWidth(), getRealHeight() * 2 - (Game.TILES_SIZE * 2) * Game.SCALE, g);
+        drawCenteredImage(scoreTable, targetWidth, targetHeight, getRealWidth(), getRealHeight(), g);
+        drawCenteredString("Level " + level, getRealWidth(), getRealHeight() - targetHeight + 140 / Game.SCALE, g);
     }
 
     public void drawChangeLevel(Graphics g, int level) {
@@ -175,11 +173,33 @@ public class Screen implements CommonVariables {
     }
 
     public void drawPaused(Graphics g) {
-        Font font = new Font("Arial", Font.PLAIN, 20 * Game.SCALE);
         g.setFont(font);
         g.setColor(Color.white);
         drawCenteredString("PAUSED", getRealWidth(), getRealHeight(), g);
 
+    }
+
+    public void drawMenu(Graphics g) {
+        g.drawImage(backgroundFixed, 0, 0, null);
+    }
+
+    public void drawSetting(Graphics g) {
+        g.setFont(font.deriveFont(Font.PLAIN, 12*Game.SCALE));
+        g.setColor(Color.white);
+        g.drawImage(settingFixed, Game.WIDTH - 100, Game.HEIGHT - 100, null);
+        if (isBasicMap) {
+            g.drawString("Erangel", Game.WIDTH + 150, Game.HEIGHT + 25);
+        } else {
+            g.drawString("Miramar", Game.WIDTH + 140, Game.HEIGHT + 25);
+        }
+    }
+
+    public void drawAbout(Graphics g) {
+        g.drawImage(aboutImage, Game.WIDTH - 175, Game.HEIGHT - 100, null);
+    }
+
+    public void drawNewGameNoti(Graphics g) {
+        g.drawImage(chooseNewGameImageFixed, Game.WIDTH, Game.HEIGHT, null);
     }
 
     public void drawCenteredString(String s, int w, int h, Graphics g) {
@@ -189,28 +209,11 @@ public class Screen implements CommonVariables {
         g.drawString(s, x, y);
     }
 
-    public void drawMenu(Graphics g) {
-        g.drawImage(backgroundFixed, 0, 0, null);
-    }
-
-    public void drawSetting(Graphics g) {
-        font.deriveFont(Font.PLAIN, 10);
-        g.setFont(font);
-        g.setColor(Color.white);
-        g.drawImage(settingFixed, Game.WIDTH - 100, Game.HEIGHT - 100, null);
-        if(isBasicMap) {
-            g.drawString("Erangel", Game.WIDTH + 120, Game.HEIGHT + 40);
-        }else{
-            g.drawString("Miramar", Game.WIDTH + 110, Game.HEIGHT + 40);
-        }
-    }
-
-    public void drawAbout(Graphics g){
-        g.drawImage(aboutImage, Game.WIDTH - 150, Game.HEIGHT - 100, null);
-    }
-
-    public void drawNewGameNoti(Graphics g){
-        g.drawImage(chooseNewGameImageFixed, Game.WIDTH, Game.HEIGHT, null);
+    public void drawCenteredImage(Image image, int imageWidth, int imageHeight,
+                                  int gameWidth, int gameHeight, Graphics g) {
+        int x = (gameWidth - imageWidth) / 2;
+        int y = (gameHeight - imageHeight) / 2;
+        g.drawImage(image, x, y, null);
     }
 
     public int getWidth() {

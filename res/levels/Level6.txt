@@ -1,0 +1,14 @@
+6 13 31
+6TTTTTTTTTTTTTTTTTTTTTTTTTTTTT7
+LC     ** *    *   *  * * *   R
+L # # #*# # #*#*# # # #*#*#*# R
+L   *     ***  *      *   * * R
+LB# # # # #*# # #*#*# # # # #*R
+LF         P **  *  *         R
+LS# # # # # # # # #*# #*# # # R
+L*  *      *  *      *        R
+L # # # #*# # # #*#*# # # # # R
+L*    **  *       *           R
+L #*# # # # # # #*# # # # # # R
+L           *1  *  *          R
+9DDDDDDDDDDDDDDDDDDDDDDDDDDDDD8

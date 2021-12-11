@@ -101,7 +101,7 @@ public class InfoPanel extends JPanel implements CommonVariables {
         settingButton.setPreferredSize(new Dimension(35, 35));
         settingButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if(!game.isPaused()){
+                if (!game.isPaused()) {
                     game.getBoard().gamePause();
                 }
             }
@@ -118,7 +118,7 @@ public class InfoPanel extends JPanel implements CommonVariables {
         resetButton.setIcon(resetImg);
         resetButton.setModel(new FixedStateButtonModel());
         resetButton.setFocusPainted(false);
-        resetButton.setPreferredSize(new Dimension(35,35));
+        resetButton.setPreferredSize(new Dimension(35, 35));
         resetButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -174,7 +174,7 @@ public class InfoPanel extends JPanel implements CommonVariables {
         this.pointsLabel.setText("Points: " + t);
     }
 
-    public void changeBackground(Color c){
+    public void changeBackground(Color c) {
         setBackground(c);
         soundButton.setBackground(c);
         settingButton.setBackground(c);

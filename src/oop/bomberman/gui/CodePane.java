@@ -12,10 +12,10 @@ public class CodePane extends JFrame implements ActionListener {
     private boolean valid = false;
     private Frame frame;
 
-    public CodePane(Frame _frame){
+    public CodePane(Frame _frame) {
         frame = _frame;
         setTitle("Code");
-        setSize(400,100);
+        setSize(400, 100);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
         btEnter.addActionListener(this);
@@ -29,17 +29,17 @@ public class CodePane extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String _code = codeField.getText();
 
-        if(frame.validCode(_code)) {
+        if (frame.validCode(_code)) {
             frame.changeLevelByCode(_code);
             valid = true;
             dispose();
         } else {
-            if(frame._gamepane.getGame().getMenu()){
+            if (frame._gamepane.getGame().getMenu()) {
                 JOptionPane.showMessageDialog(frame,
                         "You haven't started the game yet! Please start the game to change level by code!",
                         "Error",
                         JOptionPane.ERROR_MESSAGE);
-            }else {
+            } else {
                 JOptionPane.showMessageDialog(frame,
                         "That code isn't correct! Please enter the code again!",
                         "Error",

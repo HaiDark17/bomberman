@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
-
 public class Audio {
     private Clip clip = null;
     private boolean isDisabled = false;
@@ -33,7 +32,6 @@ public class Audio {
         } catch (IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
-
     }
 
     public void playSound(int _loop) {

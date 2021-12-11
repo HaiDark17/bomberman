@@ -15,7 +15,7 @@ public class Balloom extends Enemy {
 		super(x, y, board, Sprite.balloom_dead, Game.getPlayerSpeed()/2, 100);
 		
 		_sprite = Sprite.balloom_left1;
-		algorithm = new HighAlgo(_board.getPlayer(), this);
+		algorithm = new SimpleAlgo();
 		_direction = algorithm.getDirection();
 	}
 	

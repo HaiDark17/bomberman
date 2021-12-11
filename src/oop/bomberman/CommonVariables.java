@@ -11,11 +11,11 @@ public interface CommonVariables {
     int MAP_HEIGHT = 13;
     int[][] matrix = new int[MAP_HEIGHT][MAP_WIDTH]; // map size
 
-    Audio mainAudio = new Audio("res/sound/stage.wav");
-    Audio placeBombAudio = new Audio("res/sound/putBomb.wav");
+    Audio mainAudio = new Audio("res/sound/Stage.wav");
+    Audio placeBombAudio = new Audio("res/sound/PutBomb.wav");
     Audio explosionBombAudio = new Audio("res/sound/Explosion.wav");
     Audio deadAudio = new Audio("res/sound/Hit.wav");
-    Audio upItemAudio = new Audio("res/sound/upItem.wav");
+    Audio upItemAudio = new Audio("res/sound/UpItem.wav");
     Audio brickBreakAudio = new Audio("res/sound/Crystal.wav");
 
     SpriteSheet character = new SpriteSheet("/textures/character.png", 64);

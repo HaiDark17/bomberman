@@ -13,7 +13,6 @@ import java.io.FileReader;
 import java.io.IOException;
 
 
-import oop.bomberman.exceptions.BombermanException;
 import oop.bomberman.graphics.Screen;
 import oop.bomberman.gui.CodePane;
 import oop.bomberman.gui.Frame;
@@ -30,7 +29,7 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener, 
 
     public static int SCALE = 3;
 
-    public static final String TITLE = "Bomberman ";
+    public static final String TITLE = "Bomberman";
 
     // Config
     private static final int BOMBRATE = 1;
@@ -45,13 +44,10 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener, 
 
     public static int _highscore = 0;
 
-    //can be modified with bonus
     protected static int bombRate = BOMBRATE;
     protected static int bombRadius = BOMBRADIUS;
     protected static double playerSpeed = PLAYERSPEED;
 
-
-    //Time in the level screen in seconds
     protected int _screenDelay = SCREENDELAY;
 
     private Keyboard _input;
@@ -61,7 +57,6 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener, 
     private boolean isSetting = false;
     private boolean isAboutPane = false;
     //public boolean isChooseNewGame = false;
-
 
     private Board _board;
     private Screen screen;
@@ -73,7 +68,7 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener, 
     private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
     private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
 
-    public Game(Frame frame) throws BombermanException {
+    public Game(Frame frame) {
         _frame = frame;
         _frame.setTitle(TITLE);
 
@@ -112,7 +107,7 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener, 
         bs.show(); //make next buffer visible
     }
 
-    public void renderScreen() { //TODO: merge these render methods
+    public void renderScreen() {
         BufferStrategy bs = getBufferStrategy();
         if (bs == null) {
             createBufferStrategy(3);
@@ -136,6 +131,7 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener, 
 
     public void start() {
         readHighscore();
+        /*
         JWindow window = new JWindow();
         window.getContentPane().add(
                 new JLabel("", new ImageIcon("res/textures/intro.gif"), SwingConstants.CENTER));
@@ -148,6 +144,7 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener, 
         }
         window.setVisible(false);
         window.dispose();
+         */
         mainAudio.playSound(100);
         while (_menu) {
             renderScreen();
@@ -238,13 +235,13 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener, 
         }
 
         Rectangle aboutButton = new Rectangle(Game.WIDTH + 50, Game.HEIGHT + 280, 150, 50);
-        if(aboutButton.contains(e.getX(), e.getY()) && _menu){
+        if (aboutButton.contains(e.getX(), e.getY()) && _menu) {
             isAboutPane = true;
             getBoard().setShow(6);
         }
 
-        Rectangle exitAboutButton = new Rectangle(Game.WIDTH + 370, Game.HEIGHT - 100, 60,60);
-        if(exitAboutButton.contains(e.getX(), e.getY()) && isAboutPane){
+        Rectangle exitAboutButton = new Rectangle(Game.WIDTH + 370, Game.HEIGHT - 100, 60, 60);
+        if (exitAboutButton.contains(e.getX(), e.getY()) && isAboutPane) {
             isAboutPane = false;
             getBoard().setShow(4);
         }
@@ -337,11 +334,11 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener, 
             }
         }
 
-        Rectangle exitAbout = new Rectangle(Game.WIDTH + 370, Game.HEIGHT - 100, 60,60);
-        if(isAboutPane){
-            if(exitAbout.contains(e.getX(), e.getY())){
+        Rectangle exitAbout = new Rectangle(Game.WIDTH + 370, Game.HEIGHT - 100, 60, 60);
+        if (isAboutPane) {
+            if (exitAbout.contains(e.getX(), e.getY())) {
                 setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-            }else{
+            } else {
                 setCursor(Cursor.getDefaultCursor());
             }
         }

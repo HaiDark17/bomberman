@@ -5,9 +5,7 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import oop.bomberman.CommonVariables;
 import oop.bomberman.Game;
-import oop.bomberman.audio.Audio;
 
 
 public class Frame extends JFrame {
@@ -57,7 +55,7 @@ public class Frame extends JFrame {
     }
 
     public void pauseGame() {
-        _game.getBoard().gamePause();
+        _game.getBoard().gamePauseOnSetting();
     }
 
     public void resumeGame() {

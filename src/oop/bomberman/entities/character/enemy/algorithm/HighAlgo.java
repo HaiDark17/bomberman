@@ -1,12 +1,12 @@
-package oop.bomberman.entities.mob.enemy.algorithm;
+package oop.bomberman.entities.character.enemy.algorithm;
 
-import oop.bomberman.entities.mob.Player;
-import oop.bomberman.entities.mob.enemy.Enemy;
+import oop.bomberman.entities.character.Player;
+import oop.bomberman.entities.character.enemy.Enemy;
 
 import java.util.List;
 
 import static oop.bomberman.CommonVariables.matrix;
-import static oop.bomberman.entities.mob.enemy.algorithm.BFS.shortestPath;
+import static oop.bomberman.entities.character.enemy.algorithm.BFS.shortestPath;
 
 public class HighAlgo extends Algorithm {
     Player player;

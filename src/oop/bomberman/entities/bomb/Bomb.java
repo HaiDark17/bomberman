@@ -2,12 +2,11 @@ package oop.bomberman.entities.bomb;
 
 import oop.bomberman.Board;
 import oop.bomberman.Game;
-import oop.bomberman.audio.Audio;
 import oop.bomberman.entities.AnimatedEntitiy;
 import oop.bomberman.entities.Entity;
-import oop.bomberman.entities.mob.Mob;
-import oop.bomberman.entities.mob.Player;
-import oop.bomberman.entities.mob.enemy.Enemy;
+import oop.bomberman.entities.character.Character;
+import oop.bomberman.entities.character.Player;
+import oop.bomberman.entities.character.enemy.Enemy;
 import oop.bomberman.graphics.Screen;
 import oop.bomberman.graphics.Sprite;
 import oop.bomberman.level.Coordinates;
@@ -81,7 +80,7 @@ public class Bomb extends AnimatedEntitiy {
         _allowedToPassThru = true;
         _exploded = true;
 
-        Mob a = _board.getMobAt(_x, _y);
+        Character a = _board.getMobAt(_x, _y);
         if (a != null) {
             a.kill();
         }

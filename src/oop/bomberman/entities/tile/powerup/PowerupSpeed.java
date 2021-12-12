@@ -2,7 +2,7 @@ package oop.bomberman.entities.tile.powerup;
 
 import oop.bomberman.Game;
 import oop.bomberman.entities.Entity;
-import oop.bomberman.entities.mob.Player;
+import oop.bomberman.entities.character.Player;
 import oop.bomberman.graphics.Sprite;
 
 public class PowerupSpeed extends Powerup {

@@ -2,7 +2,7 @@ package oop.bomberman.entities.tile.destroyable;
 
 import oop.bomberman.entities.Entity;
 import oop.bomberman.entities.bomb.DirectionalExplosion;
-import oop.bomberman.entities.mob.enemy.Kondoria;
+import oop.bomberman.entities.character.enemy.Kondoria;
 import oop.bomberman.graphics.Screen;
 import oop.bomberman.graphics.Sprite;
 import oop.bomberman.level.Coordinates;

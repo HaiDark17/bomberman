@@ -34,7 +34,7 @@ public class InfoPanel extends JPanel implements CommonVariables {
     private ImageIcon resetImg = new ImageIcon((new ImageIcon("res/textures/reset.png")).getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 
     public InfoPanel(Game game) {
-        setLayout(new GridLayout(1, 9));
+        setLayout(new GridLayout(1, 8));
 
         emptyLabel_1 = new JLabel();
         emptyLabel_2 = new JLabel();
@@ -102,7 +102,7 @@ public class InfoPanel extends JPanel implements CommonVariables {
         settingButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (!game.isPaused()) {
-                    game.getBoard().gamePause();
+                    game.getBoard().gamePauseOnSetting();
                 }
             }
         });
@@ -122,22 +122,20 @@ public class InfoPanel extends JPanel implements CommonVariables {
         resetButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                game.getBoard().newGame();
+                game.getBoard().gamePauseOnReset();
             }
         });
-        resetLabel.add(resetButton, BorderLayout.WEST);
+        resetLabel.add(resetButton, BorderLayout.CENTER);
 
-
+        add(resetLabel);
         add(emptyLabel_1);
-        add(emptyLabel_2);
-
         add(timeLabel);
         add(pointsLabel);
         add(livesLabel);
         add(emptyLabel_4);
         add(soundLabel);
         add(settingLabel);
-        add(resetLabel);
+
 
         setBackground(basicColor);
         setPreferredSize(new Dimension(0, 40));

@@ -1,9 +1,9 @@
-package oop.bomberman.entities.mob.enemy;
+package oop.bomberman.entities.character.enemy;
 
 
 import oop.bomberman.Board;
 import oop.bomberman.Game;
-import oop.bomberman.entities.mob.enemy.algorithm.SimpleAlgo;
+import oop.bomberman.entities.character.enemy.algorithm.SimpleAlgo;
 import oop.bomberman.graphics.Sprite;
 
 public class Doll extends Enemy {

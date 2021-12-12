@@ -1,9 +1,7 @@
-package oop.bomberman.entities.mob.enemy.algorithm;
+package oop.bomberman.entities.character.enemy.algorithm;
 
-import oop.bomberman.entities.mob.Player;
-import oop.bomberman.entities.mob.enemy.Enemy;
-
-import static oop.bomberman.CommonVariables.matrix;
+import oop.bomberman.entities.character.Player;
+import oop.bomberman.entities.character.enemy.Enemy;
 
 public class MediumAlgo extends Algorithm {
     Player player;

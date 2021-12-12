@@ -2,7 +2,7 @@ package oop.bomberman.entities.bomb;
 
 import oop.bomberman.Board;
 import oop.bomberman.entities.Entity;
-import oop.bomberman.entities.mob.Mob;
+import oop.bomberman.entities.character.Character;
 import oop.bomberman.graphics.Screen;
 import oop.bomberman.graphics.Sprite;
 
@@ -66,8 +66,8 @@ public class Explosion extends Entity {
     @Override
     public boolean collide(Entity e) {
 
-        if (e instanceof Mob) {
-            ((Mob) e).kill();
+        if (e instanceof Character) {
+            ((Character) e).kill();
         }
 
         return true;

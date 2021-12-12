@@ -1,4 +1,4 @@
-package oop.bomberman.entities.mob.enemy.algorithm;
+package oop.bomberman.entities.character.enemy.algorithm;
 
 public class SimpleAlgo extends Algorithm {
     @Override

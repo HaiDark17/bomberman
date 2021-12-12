@@ -1,4 +1,4 @@
-package oop.bomberman.entities.mob.enemy;
+package oop.bomberman.entities.character.enemy;
 
 import java.awt.Color;
 
@@ -7,14 +7,14 @@ import oop.bomberman.Game;
 import oop.bomberman.entities.Entity;
 import oop.bomberman.entities.Message;
 import oop.bomberman.entities.bomb.DirectionalExplosion;
-import oop.bomberman.entities.mob.Mob;
-import oop.bomberman.entities.mob.Player;
-import oop.bomberman.entities.mob.enemy.algorithm.Algorithm;
+import oop.bomberman.entities.character.Character;
+import oop.bomberman.entities.character.Player;
+import oop.bomberman.entities.character.enemy.algorithm.Algorithm;
 import oop.bomberman.graphics.Screen;
 import oop.bomberman.graphics.Sprite;
 import oop.bomberman.level.Coordinates;
 
-public abstract class Enemy extends Mob {
+public abstract class Enemy extends Character {
     protected int points;
     protected double speed;
     protected Algorithm algorithm;

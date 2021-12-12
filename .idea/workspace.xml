@@ -1,22 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a0804caa-1fcd-4380-a333-847e49b4b58f" name="Changes" comment="">
+    <list default="true" id="a0804caa-1fcd-4380-a333-847e49b4b58f" name="Changes" comment="update đồ hoạ">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/textures/center-bar.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/textures/center-bar.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/textures/left-bar.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/textures/left-bar.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/textures/menu.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/textures/menu.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/textures/mute.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/textures/mute.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/textures/options.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/textures/options.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/textures/pause.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/textures/pause.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/textures/right-bar.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/textures/right-bar.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/textures/sound.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/textures/sound.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/oop/bomberman/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/oop/bomberman/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/bomb/Bomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/bomb/Bomb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/bomb/DirectionalExplosion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/bomb/DirectionalExplosion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/bomb/Explosion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/bomb/Explosion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/Mob.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/character/Character.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/character/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/enemy/Balloom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/character/enemy/Balloom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/enemy/Doll.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/character/enemy/Doll.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/enemy/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/character/enemy/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/enemy/Kondoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/character/enemy/Kondoria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/enemy/Minvo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/character/enemy/Minvo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/enemy/Oneal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/character/enemy/Oneal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/enemy/algorithm/Algorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/character/enemy/algorithm/Algorithm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/enemy/algorithm/BFS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/character/enemy/algorithm/BFS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/enemy/algorithm/HighAlgo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/character/enemy/algorithm/HighAlgo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/enemy/algorithm/MediumAlgo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/character/enemy/algorithm/MediumAlgo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/enemy/algorithm/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/character/enemy/algorithm/Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/mob/enemy/algorithm/SimpleAlgo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/character/enemy/algorithm/SimpleAlgo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/tile/PortalTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/tile/PortalTile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/tile/destroyable/BrickTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/tile/destroyable/BrickTile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/tile/powerup/PowerupBombs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/tile/powerup/PowerupBombs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/tile/powerup/PowerupFlames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/tile/powerup/PowerupFlames.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/entities/tile/powerup/PowerupSpeed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/entities/tile/powerup/PowerupSpeed.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/oop/bomberman/graphics/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/graphics/Screen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/gui/CodePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/gui/CodePane.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/oop/bomberman/gui/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/gui/Frame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/oop/bomberman/gui/InfoPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/gui/InfoPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/level/FileLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/level/FileLevel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,11 +87,11 @@
   </component>
   <component name="RunManager" selected="Application.Bomberman">
     <configuration name="BFS" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="oop.bomberman.entities.mob.enemy.algorithm.BFS" />
+      <option name="MAIN_CLASS_NAME" value="oop.bomberman.entities.character.enemy.algorithm.BFS" />
       <module name="bomberman" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="oop.bomberman.entities.mob.enemy.algorithm.*" />
+          <option name="PATTERN" value="oop.bomberman.entities.character.enemy.algorithm.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -131,6 +145,8 @@
       <workItem from="1639147985688" duration="2037000" />
       <workItem from="1639184719581" duration="3451000" />
       <workItem from="1639210883427" duration="15351000" />
+      <workItem from="1639235269615" duration="4458000" />
+      <workItem from="1639268285647" duration="8734000" />
     </task>
     <task id="LOCAL-00001" summary="update đồ hoạ">
       <created>1639068344067</created>

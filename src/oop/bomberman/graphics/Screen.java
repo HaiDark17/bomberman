@@ -10,7 +10,7 @@ import oop.bomberman.Board;
 import oop.bomberman.CommonVariables;
 import oop.bomberman.Game;
 import oop.bomberman.entities.Entity;
-import oop.bomberman.entities.mob.Player;
+import oop.bomberman.entities.character.Player;
 
 import javax.imageio.ImageIO;
 
@@ -46,7 +46,6 @@ public class Screen implements CommonVariables {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        settingFixed = setting.getScaledInstance(450, 325, Image.SCALE_DEFAULT);
 
         try {
             background = ImageIO.read(new File("res/textures/menu.png"));
@@ -66,7 +65,6 @@ public class Screen implements CommonVariables {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        chooseNewGameImageFixed = chooseNewGameImage.getScaledInstance(266, 100, Image.SCALE_DEFAULT);
     }
 
     public void clear() {
@@ -146,7 +144,7 @@ public class Screen implements CommonVariables {
         }
     }
 
-    public void drawEndGame(Graphics g, int points, int level) {
+    public void drawEndGame(Graphics g, int points, int highscore, int level) {
         BufferedImage image = null;
         try {
             image = ImageIO.read(new File("res/textures/score-table.png"));
@@ -160,6 +158,9 @@ public class Screen implements CommonVariables {
         g.setColor(Color.white);
         drawCenteredImage(scoreTable, targetWidth, targetHeight, getRealWidth(), getRealHeight(), g);
         drawCenteredString("Level " + level, getRealWidth(), getRealHeight() - targetHeight + 140 / Game.SCALE, g);
+        drawCenteredString("Your score: " + points, getRealWidth(), getRealHeight() - targetHeight + 700 / Game.SCALE, g);
+        drawCenteredString("High score: " + highscore, getRealWidth(), getRealHeight() - targetHeight + 1000 / Game.SCALE, g);
+        drawCenteredString("Retry", getRealWidth() + 10, getRealHeight() - targetHeight + 1524 / Game.SCALE, g);
     }
 
     public void drawChangeLevel(Graphics g, int level) {
@@ -184,13 +185,18 @@ public class Screen implements CommonVariables {
     }
 
     public void drawSetting(Graphics g) {
-        g.setFont(font.deriveFont(Font.PLAIN, 12*Game.SCALE));
+        g.setFont(font.deriveFont(Font.PLAIN, 12 * Game.SCALE));
         g.setColor(Color.white);
-        g.drawImage(settingFixed, Game.WIDTH - 100, Game.HEIGHT - 100, null);
+
+        int targetWidth = setting.getWidth() * Game.SCALE / 4;
+        int targetHeight = setting.getHeight() * Game.SCALE / 4;
+        settingFixed = setting.getScaledInstance(targetWidth, targetHeight, Image.SCALE_DEFAULT);
+        drawCenteredImage(settingFixed, targetWidth, targetHeight, getRealWidth(), getRealHeight(), g);
+
         if (isBasicMap) {
-            g.drawString("Erangel", Game.WIDTH + 150, Game.HEIGHT + 25);
+            g.drawString("Erangel", Game.WIDTH + 140, Game.HEIGHT + 65);
         } else {
-            g.drawString("Miramar", Game.WIDTH + 140, Game.HEIGHT + 25);
+            g.drawString("Miramar", Game.WIDTH + 140, Game.HEIGHT + 65);
         }
     }
 
@@ -198,8 +204,11 @@ public class Screen implements CommonVariables {
         g.drawImage(aboutImage, Game.WIDTH - 175, Game.HEIGHT - 100, null);
     }
 
-    public void drawNewGameNoti(Graphics g) {
-        g.drawImage(chooseNewGameImageFixed, Game.WIDTH, Game.HEIGHT, null);
+    public void drawChooseNewGame(Graphics g){
+        int targetWidth = chooseNewGameImage.getWidth() * Game.SCALE / 4;
+        int targetHeight = chooseNewGameImage.getHeight() * Game.SCALE / 4;
+        chooseNewGameImageFixed = chooseNewGameImage.getScaledInstance(targetWidth, targetHeight, Image.SCALE_DEFAULT);
+        drawCenteredImage(chooseNewGameImageFixed, targetWidth, targetHeight, getRealWidth(), getRealHeight(), g);
     }
 
     public void drawCenteredString(String s, int w, int h, Graphics g) {

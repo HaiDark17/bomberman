@@ -1,11 +1,11 @@
-package oop.bomberman.entities.mob;
+package oop.bomberman.entities.character;
 
 import oop.bomberman.Board;
 import oop.bomberman.Game;
 import oop.bomberman.entities.AnimatedEntitiy;
 import oop.bomberman.graphics.Screen;
 
-public abstract class Mob extends AnimatedEntitiy {
+public abstract class Character extends AnimatedEntitiy {
 
     protected Board _board;
     protected int _direction = -1;
@@ -13,7 +13,7 @@ public abstract class Mob extends AnimatedEntitiy {
     protected boolean _moving = false;
     public int _timeAfter = 80;
 
-    public Mob(int x, int y, Board board) {
+    public Character(int x, int y, Board board) {
         _x = x;
         _y = y;
         _board = board;

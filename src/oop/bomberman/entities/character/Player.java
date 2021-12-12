@@ -1,4 +1,4 @@
-package oop.bomberman.entities.mob;
+package oop.bomberman.entities.character;
 
 
 import java.awt.Color;
@@ -8,21 +8,18 @@ import java.util.List;
 
 import oop.bomberman.Board;
 import oop.bomberman.Game;
-import oop.bomberman.audio.Audio;
 import oop.bomberman.entities.Entity;
 import oop.bomberman.entities.Message;
 import oop.bomberman.entities.bomb.Bomb;
 import oop.bomberman.entities.bomb.DirectionalExplosion;
-import oop.bomberman.entities.mob.enemy.Enemy;
-import oop.bomberman.entities.tile.destroyable.BrickTile;
-import oop.bomberman.entities.tile.destroyable.DestroyableTile;
+import oop.bomberman.entities.character.enemy.Enemy;
 import oop.bomberman.entities.tile.powerup.Powerup;
 import oop.bomberman.graphics.Screen;
 import oop.bomberman.graphics.Sprite;
 import oop.bomberman.input.Keyboard;
 import oop.bomberman.level.Coordinates;
 
-public class Player extends Mob {
+public class Player extends Character {
     private List<Bomb> _bombs;
     protected Keyboard _input;
 

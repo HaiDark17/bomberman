@@ -10,8 +10,8 @@ import oop.bomberman.entities.Entity;
 import oop.bomberman.entities.Message;
 import oop.bomberman.entities.bomb.Bomb;
 import oop.bomberman.entities.bomb.Explosion;
-import oop.bomberman.entities.mob.Mob;
-import oop.bomberman.entities.mob.Player;
+import oop.bomberman.entities.character.Character;
+import oop.bomberman.entities.character.Player;
 import oop.bomberman.entities.tile.powerup.Powerup;
 import oop.bomberman.graphics.IRender;
 import oop.bomberman.graphics.Screen;
@@ -28,7 +28,7 @@ public class Board implements IRender {
     protected Screen _screen;
 
     public Entity[] _entities;
-    public List<Mob> _mobs = new ArrayList<Mob>();
+    public List<Character> _mobs = new ArrayList<Character>();
     protected List<Bomb> _bombs = new ArrayList<Bomb>();
     private List<Message> _messages = new ArrayList<Message>();
 
@@ -63,7 +63,7 @@ public class Board implements IRender {
         detectEndGame();
 
         for (int i = 0; i < _mobs.size(); i++) {
-            Mob a = _mobs.get(i);
+            Character a = _mobs.get(i);
             if (((Entity) a).isRemoved()) _mobs.remove(i);
         }
     }
@@ -172,6 +172,11 @@ public class Board implements IRender {
         _screenToShow = 1;
         _game.resetScreenDelay();
         _game.pause();
+        _game.isEndgame = true;
+        if(getPoints() >= _game.get_highscore()){
+            _game.set_highscore(getPoints());
+            _game.saveHighScore();
+        }
     }
 
     public boolean detectNoEnemies() {
@@ -189,23 +194,24 @@ public class Board implements IRender {
     | Pause & Resume
     |--------------------------------------------------------------------------
      */
-    public void gamePause() {
+    public void gamePauseOnSetting() {
         _game.resetScreenDelay();
         _screenToShow = 5;
         _game.pause();
         _game.setSetting(true);
     }
 
+    public void gamePauseOnReset(){
+        _game.resetScreenDelay();
+        _screenToShow = 7;
+        _game.pause();
+        _game.isResetGame = true;
+    }
+
     public void gameResume() {
         _game.resetScreenDelay();
         _screenToShow = -1;
         _game.run();
-    }
-
-    public void test() {
-        _game.resetScreenDelay();
-        _screenToShow = 7;
-        _game.pause();
     }
 
     /*
@@ -217,7 +223,7 @@ public class Board implements IRender {
         _screen.intializeFont();
         switch (_screenToShow) {
             case 1:
-                _screen.drawEndGame(g, points, _level.getLevel());
+                _screen.drawEndGame(g, points, _game.get_highscore(), _level.getLevel());
                 break;
             case 2:
                 _screen.drawChangeLevel(g, _level.getLevel());
@@ -235,7 +241,7 @@ public class Board implements IRender {
                 _screen.drawAbout(g);
                 break;
             case 7:
-                _screen.drawNewGameNoti(g);
+                _screen.drawChooseNewGame(g);
                 break;
         }
     }
@@ -245,7 +251,7 @@ public class Board implements IRender {
     | Getters And Setters
     |--------------------------------------------------------------------------
      */
-    public Entity getEntity(double x, double y, Mob m) {
+    public Entity getEntity(double x, double y, Character m) {
 
         Entity res = null;
 
@@ -279,9 +285,9 @@ public class Board implements IRender {
         return null;
     }
 
-    public Mob getMobAt(double x, double y) {
-        Iterator<Mob> itr = _mobs.iterator();
-        Mob cur;
+    public Character getMobAt(double x, double y) {
+        Iterator<Character> itr = _mobs.iterator();
+        Character cur;
         while (itr.hasNext()) {
             cur = itr.next();
 
@@ -293,8 +299,8 @@ public class Board implements IRender {
     }
 
     public Player getPlayer() {
-        Iterator<Mob> itr = _mobs.iterator();
-        Mob cur;
+        Iterator<Character> itr = _mobs.iterator();
+        Character cur;
         while (itr.hasNext()) {
             cur = itr.next();
 
@@ -305,9 +311,9 @@ public class Board implements IRender {
         return null;
     }
 
-    public Mob getMobAtExcluding(int x, int y, Mob a) {
-        Iterator<Mob> itr = _mobs.iterator();
-        Mob cur;
+    public Character getMobAtExcluding(int x, int y, Character a) {
+        Iterator<Character> itr = _mobs.iterator();
+        Character cur;
         while (itr.hasNext()) {
             cur = itr.next();
             if (cur == a) {
@@ -352,7 +358,7 @@ public class Board implements IRender {
         _entities[pos] = e;
     }
 
-    public void addMob(Mob e) {
+    public void addMob(Character e) {
         _mobs.add(e);
     }
 
@@ -376,7 +382,7 @@ public class Board implements IRender {
     }
 
     protected void renderMobs(Screen screen) {
-        Iterator<Mob> itr = _mobs.iterator();
+        Iterator<Character> itr = _mobs.iterator();
 
         while (itr.hasNext())
             itr.next().render(screen);
@@ -414,7 +420,7 @@ public class Board implements IRender {
 
     protected void updateMobs() {
         if (_game.isPaused()) return;
-        Iterator<Mob> itr = _mobs.iterator();
+        Iterator<Character> itr = _mobs.iterator();
 
         while (itr.hasNext() && !_game.isPaused())
             itr.next().update();

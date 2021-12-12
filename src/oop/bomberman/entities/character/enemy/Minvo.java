@@ -1,10 +1,9 @@
-package oop.bomberman.entities.mob.enemy;
+package oop.bomberman.entities.character.enemy;
 
 
 import oop.bomberman.Board;
 import oop.bomberman.Game;
-import oop.bomberman.entities.mob.enemy.algorithm.HighAlgo;
-import oop.bomberman.entities.mob.enemy.algorithm.MediumAlgo;
+import oop.bomberman.entities.character.enemy.algorithm.HighAlgo;
 import oop.bomberman.graphics.Sprite;
 
 public class Minvo extends Enemy {

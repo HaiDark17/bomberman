@@ -2,7 +2,7 @@ package oop.bomberman.entities.bomb;
 
 import oop.bomberman.Board;
 import oop.bomberman.entities.Entity;
-import oop.bomberman.entities.mob.Mob;
+import oop.bomberman.entities.character.Character;
 import oop.bomberman.graphics.Screen;
 
 public class DirectionalExplosion extends Entity {
@@ -64,7 +64,7 @@ public class DirectionalExplosion extends Entity {
 
             Entity a = _board.getEntity(x, y, null);
 
-            if (a instanceof Mob) ++radius; //explosion has to be below the mob
+            if (a instanceof Character) ++radius; //explosion has to be below the mob
 
             if (a.collide(this) == false) //cannot pass thru
                 break;

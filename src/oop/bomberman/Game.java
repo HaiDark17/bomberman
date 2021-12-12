@@ -35,7 +35,7 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener, 
 
     public static final int TIME = 200;
     public static final int POINTS = 0;
-    public static final int LIVES = 1;
+    public static final int LIVES = 3;
 
     protected static int SCREENDELAY = 3;
 
@@ -55,6 +55,7 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener, 
     private boolean isAboutPane = false;
     public boolean isEndgame = false;
     public boolean isResetGame = false;
+    private boolean isClickChangeMap = false;
 
     private Board _board;
     private Screen screen;
@@ -264,31 +265,43 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener, 
                 isSetting = false;
                 getBoard().gameResume();
             }
+            if (isClickChangeMap) {
+                if(screen.isBasicMap){
+                    map.modifySpriteSheet("/textures/miramar.png", 64);
+                    changeMap();
+                    _frame.get_infopanel().changeBackground(desertColor);
+                    screen.isBasicMap = false;
+                }else{
+                    map.modifySpriteSheet("/textures/erangel.png", 64);
+                    changeMap();
+                    _frame.get_infopanel().changeBackground(basicColor);
+                    screen.isBasicMap = true;
+                }
+                isClickChangeMap = false;
+            }
         }
 
         Rectangle changeMapButton = new Rectangle(Game.WIDTH + 270, Game.HEIGHT + 40, 30, 30);
         Rectangle changeMapButton_1 = new Rectangle(Game.WIDTH + 70, Game.HEIGHT + 40, 30, 30);
 
         if (changeMapButton.contains(e.getX(), e.getY()) && isSetting) {
+            isClickChangeMap = true;
             if (screen.isBasicMap) {
                 map.modifySpriteSheet("/textures/miramar.png", 64);
-                changeMap();
                 screen.isBasicMap = false;
             } else {
                 map.modifySpriteSheet("/textures/erangel.png", 64);
-                changeMap();
                 screen.isBasicMap = true;
             }
         }
 
         if (changeMapButton_1.contains(e.getX(), e.getY()) && isSetting) {
+            isClickChangeMap = true;
             if (screen.isBasicMap) {
                 map.modifySpriteSheet("/textures/miramar.png", 64);
-                changeMap();
                 screen.isBasicMap = false;
             } else {
                 map.modifySpriteSheet("/textures/erangel.png", 64);
-                changeMap();
                 screen.isBasicMap = true;
             }
         }
@@ -309,7 +322,9 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener, 
             }
             if (screen.isBasicMap) {
                 _frame.get_infopanel().changeBackground(basicColor);
+                changeMap();
             } else {
+                changeMap();
                 _frame.get_infopanel().changeBackground(desertColor);
             }
         }

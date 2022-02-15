@@ -37,7 +37,7 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener, 
     public static final int POINTS = 0;
     public static final int LIVES = 3;
 
-    protected static int SCREENDELAY = 3;
+    protected static int SCREENDELAY = 2;
 
     public static int _highscore = 0;
 

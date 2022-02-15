@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a0804caa-1fcd-4380-a333-847e49b4b58f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tree.png" beforeDir="false" afterPath="$PROJECT_DIR$/Tree.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/data/BestScore.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/data/BestScore.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/bomberman/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/bomberman/Game.java" afterDir="false" />
+    <list default="true" id="a0804caa-1fcd-4380-a333-847e49b4b58f" name="Changes" comment="Add tree">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +49,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="ToolWindowRun.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../bomberman-test" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
